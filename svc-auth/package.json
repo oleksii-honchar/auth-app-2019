@@ -9,6 +9,7 @@
     "build:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.sh",
     "build:loc": "bash scripts/build.loc.sh",
     "build:loc:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.loc.sh",
+    "commit": "npx git-cz",
     "clean:dist": "rm -rf dist/static",
     "docker:build": "bash ./devops/scripts/build.sh",
     "docker:up": "bash ./devops/scripts/run.sh",
@@ -26,6 +27,17 @@
     "types:watch": "yarn types:check -- --watch",
     "watch": "run-p types:watch watch:loc",
     "watch:loc": "bash scripts/watch.loc.sh"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "git add .",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --config=./configs/commitlint.config.js"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "svc-auth/node_modules/cz-conventional-changelog"
+    }
   },
   "pre-commit": [
     "types:check",
@@ -74,6 +86,8 @@
     "@babel/preset-typescript": "7.6.0",
     "@babel/register": "7.6.0",
     "@babel/runtime": "7.6.0",
+    "@commitlint/cli": "8.1.0",
+    "@commitlint/config-conventional": "8.1.0",
     "@types/body-parser": "1.17.1",
     "@types/bunyan": "1.8.6",
     "@types/bunyan-format": "0.2.0",
@@ -96,10 +110,14 @@
     "babel-loader": "8",
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "3.2.0",
+    "commitizen": "4.0.3",
+    "copy-webpack-plugin": "5.0.4",
+    "cross-env": "5.2.1",
+    "cz-conventional-changelog": "3.0.2",
     "eslint": "6.3.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-config-prettier": "6.3.0",
-    "eslint-import-resolver-babel-module": "^5.1.0",
+    "eslint-import-resolver-babel-module": "5.1.0",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jest": "22.17.0",
@@ -108,8 +126,7 @@
     "eslint-plugin-node": "10.0.0",
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "2.0.1",
-    "copy-webpack-plugin": "5.0.4",
-    "cross-env": "5.2.1",
+    "husky": "3.0.5",
     "jest": "24.9.0",
     "nodemon": "1.19.2",
     "rimraf": "3.0.0",
@@ -119,10 +136,10 @@
     "ts-node": "8.3.0",
     "tsconfig-paths-webpack-plugin": "3.2.0",
     "typescript": "3.6.3",
-    "webpack-cli": "3.3.8",
-    "webpack-merge": "4.2.2",
     "webpack": "4.39.3",
-    "webpack-bundle-analyzer": "3.4.1"
+    "webpack-bundle-analyzer": "3.4.1",
+    "webpack-cli": "3.3.8",
+    "webpack-merge": "4.2.2"
   },
   "engines": {
     "node": "12"

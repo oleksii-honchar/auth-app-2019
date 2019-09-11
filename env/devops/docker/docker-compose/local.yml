@@ -1,0 +1,248 @@
+version: '3.7'
+
+services:
+  skillum-nginx:
+    container_name: skillum-nginx
+    # https://gitlab.ciklum.net/st/nginx-more
+    image: registry.ciklum.net/ciklum/st/nginx-more:1.0.1
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../../nginx/config.loc:/etc/nginx:ro
+    links:
+      - "skillum-svc-auth:svc-auth"
+      - "skillum-svc-im:svc-im"
+      - "skillum-svc-skills:svc-skills"
+      - "skillum-svc-recruitment:svc-recruitment"
+      - "skillum-wa-landing:wa-landing"
+      - "skillum-wa-portal:wa-portal"
+      - "skillum-wa-shared:wa-shared"
+      - "skillum-wa-skills:wa-skills"
+    networks:
+      - default
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10k"
+        max-file: "3"
+
+  skillum-wa-landing:
+    container_name: skillum-wa-landing
+    image: registry.ciklum.net/ciklum/skillum/wa-landing:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - APP_SVC_PORT=$LAND_APP_SVC_PORT
+      - APP_SVC_DEBUG_PORT=$LAND_APP_SVC_DEBUG_PORT
+      - APP_SVC_HOST=$LAND_APP_SVC_HOST
+      - SVC_HOST=http://svc-auth-loc.skillum.pp.ciklum.com
+    networks:
+      - default
+
+  skillum-wa-portal:
+    container_name: skillum-wa-portal
+    image: registry.ciklum.net/ciklum/skillum/wa-portal:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - APP_GROUP_CONFIG
+      - APP_SVC_PORT=$PORTAL_APP_SVC_PORT
+      - APP_SVC_DEBUG_PORT=$PORTAL_APP_SVC_DEBUG_PORT
+      - APP_SVC_HOST=$PORTAL_APP_SVC_HOST
+      - GOOGLE_CLIENT_ID
+    links:
+      - "skillum-wa-shared:wa-shared"
+      - "skillum-wa-skills:wa-skills"
+    networks:
+    - default
+
+  skillum-wa-shared:
+    container_name: skillum-wa-shared
+    image: registry.ciklum.net/ciklum/skillum/wa-shared:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - APP_GROUP_CONFIG
+      - APP_SVC_PORT=$SHARED_APP_SVC_PORT
+      - APP_SVC_DEBUG_PORT=$SHARED_APP_SVC_DEBUG_PORT
+      - APP_SVC_HOST=$SHARED_APP_SVC_HOST
+    links:
+      - "skillum-svc-skills:svc-skills"
+    networks:
+      - default
+
+  skillum-wa-skills:
+    container_name: skillum-wa-skills
+    image: registry.ciklum.net/ciklum/skillum/wa-skills:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - APP_GROUP_CONFIG
+      - APP_SVC_PORT=$SKILLS_APP_SVC_PORT
+      - APP_SVC_DEBUG_PORT=$SKILLS_APP_SVC_DEBUG_PORT
+      - SVC_HOST=http://svc-skills-loc.skillum.pp.ciklum.com
+      - SVC_MOUNT_POINT=/api/v1
+      - GOOGLE_CLIENT_ID
+    links:
+      - "skillum-svc-skills:svc-skills"
+    networks:
+      - default
+
+  skillum-svc-skills:
+    container_name: skillum-svc-skills
+    image: registry.ciklum.net/ciklum/skillum/svc-skills:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - POSTGRES_USER=$SKILLS_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$SKILLS_SVC_POSTGRES_PASSWORD
+      - POSTGRES_PORT=$SKILLS_SVC_POSTGRES_PORT
+      - POSTGRES_HOST=$SKILLS_SVC_POSTGRES_HOST
+      - POSTGRES_DB=$SKILLS_SVC_POSTGRES_DB
+    depends_on:
+      - skillum-skills-db
+    links:
+      - "skillum-skills-db:$SKILLS_SVC_POSTGRES_HOST"
+    networks:
+      - default
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10k"
+        max-file: "3"
+
+  skillum-skills-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=$SKILLS_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$SKILLS_SVC_POSTGRES_PASSWORD
+    ports:
+      - "$SKILLS_SVC_POSTGRES_PORT:5432"
+    volumes:
+      - skillum-skills-db-data:/var/lib/postgresql/data
+    networks:
+      - default
+
+  skillum-svc-recruitment:
+    container_name: skillum-svc-recruitment
+    image: registry.ciklum.net/ciklum/skillum/svc-recruitment:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - POSTGRES_USER=$RECRUITMENT_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$RECRUITMENT_SVC_POSTGRES_PASSWORD
+      - POSTGRES_PORT=$RECRUITMENT_SVC_POSTGRES_PORT
+      - POSTGRES_HOST=$RECRUITMENT_SVC_POSTGRES_HOST
+      - POSTGRES_DB=$RECRUITMENT_SVC_POSTGRES_DB
+    depends_on:
+      - skillum-recruitment-db
+    links:
+      - "skillum-recruitment-db:$RECRUITMENT_SVC_POSTGRES_HOST"
+    networks:
+      - default
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10k"
+        max-file: "3"
+
+  skillum-recruitment-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=$RECRUITMENT_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$RECRUITMENT_SVC_POSTGRES_PASSWORD
+    ports:
+      - "$RECRUITMENT_SVC_POSTGRES_PORT:5432"
+    volumes:
+      - skillum-recruitment-db-data:/var/lib/postgresql/data
+    networks:
+      - default
+
+  skillum-svc-auth:
+    container_name: skillum-svc-auth
+    image: registry.ciklum.net/ciklum/skillum/svc-auth:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - POSTGRES_USER=$AUTH_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$AUTH_SVC_POSTGRES_PASSWORD
+      - POSTGRES_PORT=$AUTH_SVC_POSTGRES_PORT
+      - POSTGRES_HOST=$AUTH_SVC_POSTGRES_HOST
+      - POSTGRES_DB=$AUTH_SVC_POSTGRES_DB
+      - IM_SVC_HOST=http://svc-im
+    depends_on:
+      - skillum-auth-db
+    links:
+      - "skillum-auth-db:$AUTH_SVC_POSTGRES_HOST"
+      - "skillum-svc-im:svc-im"
+    networks:
+      - host
+      - default
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10k"
+        max-file: "3"
+
+  skillum-auth-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=$AUTH_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$AUTH_SVC_POSTGRES_PASSWORD
+    ports:
+      - "$AUTH_SVC_POSTGRES_PORT:5432"
+    volumes:
+      - skillum-auth-db-data:/var/lib/postgresql/data
+    networks:
+      - default
+
+  skillum-svc-im:
+    container_name: skillum-svc-im
+    image: registry.ciklum.net/ciklum/skillum/svc-im:latest
+    env_file:
+      - ../../config/local.env
+    environment:
+      - POSTGRES_HOST=$IM_SVC_POSTGRES_HOST
+      - POSTGRES_DB=$IM_SVC_POSTGRES_DB
+      - POSTGRES_USER=$IM_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$IM_SVC_POSTGRES_PASSWORD
+      - POSTGRES_PORT=$IM_SVC_POSTGRES_PORT
+    depends_on:
+      - skillum-im-db
+    links:
+      - "skillum-im-db:$IM_SVC_POSTGRES_HOST"
+    networks:
+      - default
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10k"
+        max-file: "3"
+
+  skillum-im-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=$IM_SVC_POSTGRES_USER
+      - POSTGRES_PASSWORD=$IM_SVC_POSTGRES_PASSWORD
+    ports:
+      - "$IM_SVC_POSTGRES_PORT:5432"
+    volumes:
+      - skillum-im-db-data:/var/lib/postgresql/data
+    networks:
+      - default
+
+networks:
+  default:
+  host:
+
+volumes:
+  skillum-skills-db-data:
+  skillum-recruitment-db-data:
+  skillum-auth-db-data:
+  skillum-im-db-data:

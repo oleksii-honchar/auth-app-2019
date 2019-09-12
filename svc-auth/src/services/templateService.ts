@@ -1,9 +1,9 @@
 import * as hbs from 'handlebars';
-import { getLogger } from '@src/libs/logger';
+import { getLogger } from 'src/libs/logger';
 import * as _ from 'lodash';
 import { existsSync, readFile } from 'fs';
 import * as path from 'path';
-import { TEMPLATES_PATH } from '@src/constants';
+import { TEMPLATES_PATH } from 'src/constants';
 
 class TemplateService {
   public templates: Object[] = [];

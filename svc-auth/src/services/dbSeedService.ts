@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 
-import { getLogger } from '@src/libs/logger';
+import { getLogger } from 'src/libs/logger';
 
 class DbSeedService {
   private logger = getLogger('DbSeedService');

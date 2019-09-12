@@ -1,7 +1,7 @@
-import { User } from '@src/models';
-import { AccessToken } from '@src/models/AccessToken';
-import { jwtService } from '@src/services/jwtService';
-import { AccessTokenScopes } from '@src/enums/AccessTokenScopes';
+import { User } from 'src/models';
+import { AccessToken } from 'src/models/AccessToken';
+import { jwtService } from 'src/services/jwtService';
+import { AccessTokenScopes } from 'src/enums/AccessTokenScopes';
 
 class AccessTokenService {
   private ttl: number;

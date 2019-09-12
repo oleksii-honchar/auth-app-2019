@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import { pick, isEmpty, defaults, omit, extend, has, get, isObject } from 'lodash';
-import * as bunyan from 'bunyan';
-import * as bformat from 'bunyan-format';
+import Bunyan from 'bunyan';
+import BanyanFormat from 'bunyan-format';
 
 import { is } from './is';
 
-import * as package$ from '../../package.json';
+import package$ from '../../package.json';
 
-const loggers: { [key: string]: bunyan } = {};
+const loggers: { [key: string]: Bunyan } = {};
 
 function reqSerializer(req: Request) {
   const headers = pick(req.headers, ['host', 'user-agent', 'x-real-ip']);
@@ -73,7 +73,7 @@ function errorSerializer(error: NodeJS.ErrnoException) {
   return serialized;
 }
 
-const defaultOptions: bunyan.LoggerOptions = {
+const defaultOptions: Bunyan.LoggerOptions = {
   name: package$.name,
   level: 'error',
   serializers: {
@@ -82,21 +82,18 @@ const defaultOptions: bunyan.LoggerOptions = {
   }
 };
 
-function applyFormat(loggerOptions: bunyan.LoggerOptions) {
+function applyFormat(loggerOptions: Bunyan.LoggerOptions) {
   if (
     !['local', 'development', 'test', 'qa', 'stage', 'production'].includes(process.env.ENV_NAME!)
   ) {
     return {};
   }
 
-  const formatOut = bformat({ outputMode: 'short' });
+  const formatOut = new BanyanFormat({ outputMode: 'short' });
   const logLevel = loggerOptions.ignoreLogLevel ? 'info' : process.env.LOG_LEVEL;
-  const streams = [];
-
-  streams.push({ stream: formatOut });
 
   return extend(loggerOptions, {
-    streams,
+    stream: formatOut,
     level: logLevel,
     serializers: extend(defaultOptions.serializers, {
       err: errorSerializer
@@ -104,18 +101,18 @@ function applyFormat(loggerOptions: bunyan.LoggerOptions) {
   });
 }
 
-function createLogger(name: string, loggerOptions?: Partial<bunyan.LoggerOptions>): bunyan {
+function createLogger(name: string, loggerOptions?: Partial<Bunyan.LoggerOptions>): Bunyan {
   let options = defaults(loggerOptions, defaultOptions);
   options.name = name;
   applyFormat(options);
-  options = omit(options, ['ignoreLogLevel', 'client']) as bunyan.LoggerOptions;
-  return bunyan.createLogger(options);
+  options = omit(options, ['ignoreLogLevel', 'client']) as Bunyan.LoggerOptions;
+  return Bunyan.createLogger(options);
 }
 
 export function getLogger(
   loggerName?: string,
-  loggerOptions?: Partial<bunyan.LoggerOptions>
-): bunyan {
+  loggerOptions?: Partial<Bunyan.LoggerOptions>
+): Bunyan {
   const name = loggerName || package$.name;
   const logger = loggers[name];
 

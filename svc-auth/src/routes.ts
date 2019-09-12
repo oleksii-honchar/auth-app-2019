@@ -3,7 +3,7 @@ import * as url from 'url';
 import * as path from 'path';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { is } from './utils';
+import { is } from 'src/libs/is';
 import { apiRouter } from './routes/api';
 import { docsRouter } from './routes/docs';
 import { faviconRouter } from './routes/favicon';

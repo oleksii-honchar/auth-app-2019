@@ -1,5 +1,5 @@
 import { Transporter, SendMailOptions, createTransport } from 'nodemailer';
-import { getLogger } from '@src/libs/logger';
+import { getLogger } from 'src/libs/logger';
 
 class MailService {
   private logger = getLogger('MailService');

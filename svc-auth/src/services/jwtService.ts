@@ -1,8 +1,9 @@
-import { User } from '@src/models';
 import * as jwt from 'jsonwebtoken';
 import { Buffer } from 'safe-buffer';
-import { getLogger } from '@src/libs/logger';
+import { getLogger } from 'src/libs/logger';
 import { createCipheriv, Binary, createDecipheriv } from 'crypto';
+
+import { User } from 'src/models';
 
 class JwtService {
   private logger = getLogger('jwtService');

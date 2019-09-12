@@ -5,7 +5,7 @@ import {
 } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { is } from '@src/utils';
+import { is } from 'src/libs/is';
 
 import { getLogger } from '../logger';
 

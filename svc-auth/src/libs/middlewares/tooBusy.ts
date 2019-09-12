@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
-import * as toobusy from 'toobusy-js';
+import toobusy from 'toobusy-js';
 
-import { is } from '@src/utils';
+import { is } from 'src/libs/is';
 
 toobusy.maxLag(300);
 toobusy.interval(500);

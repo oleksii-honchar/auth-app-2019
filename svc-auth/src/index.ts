@@ -1,16 +1,16 @@
-import * as http from 'http';
-import * as tooBusy from 'toobusy-js';
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as cookieParser from 'cookie-parser';
+import http from 'http';
+import tooBusy from 'toobusy-js';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
-import { router } from './routes';
-import { getLogger } from './libs/logger';
-import { dbService, dbSeedService } from './services';
-import { errorResponder, finalResponder } from './libs/responders';
+import { router } from 'src/routes';
+import { getLogger } from 'src/libs/logger';
+import { dbService, dbSeedService } from 'src/services';
+import { errorResponder, finalResponder } from 'src/libs/responders';
 import { noCacheMiddleware, tooBusyMiddleware, requestLoggerMiddleware } from './libs/middlewares';
 
-import * as package$ from 'package.json';
+import package$ from '../package.json';
 
 process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'error';
 

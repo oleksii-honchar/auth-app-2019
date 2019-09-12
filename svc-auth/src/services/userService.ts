@@ -1,7 +1,7 @@
-import { User } from '@src/models';
-import { getLogger } from '@src/libs/logger';
-import { RegisterParamsInterface } from '@src/routes/register/RegisterParamsFromReq';
-import { pwdService } from '@src/services/pwdService';
+import { User } from 'src/models';
+import { getLogger } from 'src/libs/logger';
+import { RegisterParamsInterface } from 'src/routes/register/RegisterParamsFromReq';
+import { pwdService } from 'src/services/pwdService';
 
 class UserService {
   private logger = getLogger('UserService');

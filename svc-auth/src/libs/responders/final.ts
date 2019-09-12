@@ -2,7 +2,7 @@ import {
   Router, Request, Response, NextFunction,
 } from 'express';
 
-import { is } from '@src/utils';
+import { is } from 'src/libs/is';
 
 const router = Router();
 

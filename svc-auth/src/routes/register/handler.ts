@@ -1,16 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { RegisterParamsFromReq } from '@src/routes/register/RegisterParamsFromReq';
-import { userService } from '@src/services';
+import { RegisterParamsFromReq } from 'src/routes/register/RegisterParamsFromReq';
+import { userService } from 'src/services';
 import { SendMailOptions } from 'nodemailer';
-import { User } from '@src/models';
-import { CONFIG_MAILER_ACTIVATION_EMAIL_SUBJECT, CONFIG_MAILER_FROM, CONFIG_USER_SEND_EMAIL_ACTIVATION } from '@src/constants';
-import { mailService } from '@src/services/mailService';
-import { templateService } from '@src/services/templateService';
-import { getLogger } from '@src/libs/logger';
-import { accessTokenService } from '@src/services/accessTokenService';
-import { AccessTokenScopes } from '@src/enums/AccessTokenScopes';
+import { User } from 'src/models';
+import { CONFIG_MAILER_ACTIVATION_EMAIL_SUBJECT, CONFIG_MAILER_FROM, CONFIG_USER_SEND_EMAIL_ACTIVATION } from 'src/constants';
+import { mailService } from 'src/services/mailService';
+import { templateService } from 'src/services/templateService';
+import { getLogger } from 'src/libs/logger';
+import { accessTokenService } from 'src/services/accessTokenService';
+import { AccessTokenScopes } from 'src/enums/AccessTokenScopes';
 import { RegisterParamsInterface } from './RegisterParamsFromReq';
 
 async function post (req: Request, res: Response, next: NextFunction) {

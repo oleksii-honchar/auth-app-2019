@@ -1,6 +1,6 @@
 import { Schema, Document, model } from 'mongoose';
-import { User } from '@src/models/User';
-import { AccessTokenScopes } from '@src/enums/AccessTokenScopes';
+import { User } from 'src/models/User';
+import { AccessTokenScopes } from 'src/enums/AccessTokenScopes';
 
 export interface AccessToken extends Document{
   createdAt: Date;

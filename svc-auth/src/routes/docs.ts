@@ -2,7 +2,7 @@ import { Router, static as serveStatic } from 'express';
 import * as path from 'path';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { is } from '../utils';
+import { is } from 'src/libs/is';
 import { STATIC_ASSETS_PATH } from '../constants';
 
 export const docsRouter = Router();

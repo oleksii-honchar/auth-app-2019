@@ -3,7 +3,7 @@ import { pick, isEmpty, defaults, omit, extend, has, get, isObject } from 'lodas
 import Bunyan from 'bunyan';
 import BanyanFormat from 'bunyan-format';
 
-import { is } from './is';
+import { is } from 'src/libs/is';
 
 import package$ from '../../package.json';
 

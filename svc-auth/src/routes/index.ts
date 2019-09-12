@@ -1,13 +1,13 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import * as url from 'url';
-import * as path from 'path';
-import * as HttpStatusCodes from 'http-status-codes';
+import url from 'url';
+import path from 'path';
+import HttpStatusCodes from 'http-status-codes';
 
 import { is } from 'src/libs/is';
-import { apiRouter } from './routes/api';
-import { docsRouter } from './routes/docs';
-import { faviconRouter } from './routes/favicon';
-import { swaggerEditorRouter } from './routes/swaggerEditor';
+import { apiRouter } from './api';
+import { docsRouter } from './docs';
+import { faviconRouter } from './favicon';
+import { swaggerEditorRouter } from './swaggerEditor';
 
 const mountPoint = process.env.SVC_MOUNT_POINT!;
 export const router = Router();

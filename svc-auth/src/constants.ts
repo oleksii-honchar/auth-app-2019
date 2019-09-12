@@ -5,7 +5,7 @@ import * as path from 'path';
     ./dist/svc/bundle.js - svc bundle path
     ../dist/static/assets - assets served from
   when local:
-    ./src/src/index.dev.js
+    ./src/src/index.loc.js
     ./assets - assets served from
  */
 let staticAssetsPath = '';

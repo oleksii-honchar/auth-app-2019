@@ -25,7 +25,8 @@
     "noLib": false, // Do not include the default library file (lib.d.ts).
     "noStrictGenericChecks": true, // Disable strict checking of generic signatures in function types.
     "paths": {
-      "src": [ "./src/*", "./src" ]
+      "src": [ "./src/*", "./src" ],
+      "package.json": [ "./package.json" ]
     },
     "pretty": true,
     "removeComments": true, // Do not emit comments to output

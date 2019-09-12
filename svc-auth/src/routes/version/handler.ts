@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import * as package$ from 'package.json';
+import package$ from 'package.json';
 
 function get (req: Request, res: Response, next: NextFunction) {
   const packageName = package$.name || 'not specified';

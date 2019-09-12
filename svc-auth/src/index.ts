@@ -4,10 +4,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
-import { router } from 'src/routes';
-import { getLogger } from 'src/libs/logger';
-import { dbService, dbSeedService } from 'src/services';
-import { errorResponder, finalResponder } from 'src/libs/responders';
+import { router } from './routes';
+import { getLogger } from './libs/logger';
+import { dbService, dbSeedService } from './services';
+import { errorResponder, finalResponder } from './libs/responders';
 import { noCacheMiddleware, tooBusyMiddleware, requestLoggerMiddleware } from './libs/middlewares';
 
 import package$ from '../package.json';

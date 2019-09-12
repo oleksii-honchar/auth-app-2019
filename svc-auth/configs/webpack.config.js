@@ -14,7 +14,7 @@ const moduleCfg = require('./webpack/module.config');
 const baseCfg = require('./webpack/base.config');
 const prodCfg = require('./webpack/prod.config');
 
-console.log(`[config:webpack] "${pkg.name}"config composition started`);
+console.log(`[config:webpack] "${pkg.name}" config composition started`);
 
 module.exports = (env) => {
   env = env ? env : {};

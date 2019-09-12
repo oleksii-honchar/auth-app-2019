@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # for prod ENV vars provided from outside
-../devops/local/scripts/check-env-vars.sh
+devops/local/scripts/check-env-vars.sh
 
 debugEnvNames=("local" "development" "qa")
 

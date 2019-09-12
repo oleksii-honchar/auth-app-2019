@@ -18,7 +18,7 @@ module.exports = (env) => ({
     writeToDisk: true,
   },
   entry: {
-    bundle: './src/index.tsx',
+    bundle: './src/index.ts',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.html', '.ts', '.tsx'],

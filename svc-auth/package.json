@@ -9,7 +9,7 @@
     "build:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.sh",
     "build:loc": "bash scripts/build.loc.sh",
     "build:loc:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.loc.sh",
-    "commit": "npx git-cz",
+    "cm": "npx git-cz",
     "clean:dist": "rm -rf dist/static",
     "docker:build": "bash ./devops/scripts/build.sh",
     "docker:up": "bash ./devops/scripts/run.sh",
@@ -30,7 +30,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "git add .",
+      "pre-commit": "git add . && run-s types:check lint:fix lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --config=./configs/commitlint.config.js"
     }
   },

@@ -13,6 +13,7 @@ const mountPoint = process.env.SVC_MOUNT_POINT!;
 export const router = Router();
 
 router.use(faviconRouter);
+
 router.use(mountPoint, [
   apiRouter,
   (req: Request, res: Response, next: NextFunction) => {

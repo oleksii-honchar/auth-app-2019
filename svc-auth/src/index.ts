@@ -10,7 +10,7 @@ import { dbService, dbSeedService } from './services';
 import { errorResponder, finalResponder } from './libs/responders';
 import { noCacheMiddleware, tooBusyMiddleware, requestLoggerMiddleware } from './libs/middlewares';
 
-import package$ from '../package.json';
+import package$ from 'package.json';
 
 process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'error';
 
@@ -24,9 +24,6 @@ logger.info(`[SVC_PORT = ${port}]`);
 logger.info(`[SVC_MOUNT_POINT = ${process.env.SVC_MOUNT_POINT}]`);
 logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
 logger.info(`[WA_BASE_URL = ${process.env.WA_BASE_URL}]`);
-logger.info(`[API_SECRET_KEY = ${process.env.API_SECRET_KEY}]`);
-logger.info(`[JWT_TTL_SECONDS = ${process.env.JWT_TTL_SECONDS}]`);
-logger.info(`[ACCESS_TOKEN_TTL_SECONDS = ${process.env.ACCESS_TOKEN_TTL_SECONDS}]`);
 
 logger.info(`Starting app [${package$.name}] ...`);
 

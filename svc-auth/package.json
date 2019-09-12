@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
+    "start": "run-p launch:loc watch:loc",
     "prebuild": "yarn clean:dist",
     "build": "bash scripts/build.sh",
     "build:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.sh",
@@ -20,7 +21,6 @@
     "launch:prod:loc": "bash scripts/launch.prod.loc.sh",
     "lint": "npx eslint src --config ./configs/eslint.config.js  --ext .ts,.tsx,.json",
     "lint:fix": "yarn lint --fix",
-    "start": "yarn launch:loc",
     "test": "jest --config ./configs/jest.config.js",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "types:check": "tsc -p tsconfig.json",
@@ -73,6 +73,7 @@
   "devDependencies": {
     "@babel/cli": "7.6.0",
     "@babel/core": "7.6.0",
+    "@babel/node": "7.6.1",
     "@babel/plugin-proposal-class-properties": "7.5.5",
     "@babel/plugin-proposal-decorators": "7.6.0",
     "@babel/plugin-proposal-object-rest-spread": "7.5.5",

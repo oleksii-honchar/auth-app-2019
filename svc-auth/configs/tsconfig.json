@@ -34,7 +34,7 @@
     "sourceMap": true,
     "strict": true, // Enable all strict type-checking options
     "strictNullChecks": true, // Enable strict null checks
-    "target": "es2018",
+    "target": "esnext",
     "typeRoots": [ // relative to package.json path
       "node_modules/@types",
       "src/typings"

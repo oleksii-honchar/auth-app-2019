@@ -24,6 +24,7 @@ module.exports = {
     '@babel/typescript',
   ],
   plugins: [
+    '@babel/plugin-transform-typescript',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import',

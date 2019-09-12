@@ -29,13 +29,6 @@ module.exports = (env) => ({
   },
   plugins: [
     new LodashModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
-      'PKG_NAME': JSON.stringify(pkg.name),
-      'PKG_VERSION': JSON.stringify(pkg.version),
-    }),
     new LoaderOptionsPlugin({
       debug: process.env.NODE_ENV !== 'production',
     }),

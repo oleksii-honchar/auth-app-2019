@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "start": "run-p launch:loc watch:loc",
+    "start": "run-p launch:loc watch",
     "prebuild": "yarn clean:dist",
     "build": "bash scripts/build.sh",
     "build:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.sh",

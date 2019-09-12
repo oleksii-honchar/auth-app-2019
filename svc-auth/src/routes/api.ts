@@ -7,5 +7,5 @@ export const apiRouter = Router();
 
 apiRouter.use([
   versionRouter,
-  registerRouter
+  registerRouter,
 ]);

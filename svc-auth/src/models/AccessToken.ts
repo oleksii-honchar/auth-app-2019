@@ -13,19 +13,19 @@ const AccessTokenSchema = new Schema<AccessToken>({
   createdAt: {
     type: Date,
     default: Date.now,
-    expires: `${process.env.ACCESS_TOKEN_TTL_SECONDS}s`
+    expires: `${process.env.ACCESS_TOKEN_TTL_SECONDS}s`,
   },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
   },
   jwt: {
     type: String,
     required: true,
-    maxLength:1024
+    maxLength: 1024,
   },
-  scope: Number
+  scope: Number,
 });
 
 export const AccessToken = model<AccessToken>('AccessToken', AccessTokenSchema);

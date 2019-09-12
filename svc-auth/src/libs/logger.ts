@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { pick, isEmpty, defaults, omit, extend, has, get, isObject } from 'lodash';
 import * as bunyan from 'bunyan';
-import * as BunyanFormat from 'bunyan-format';
+import * as bformat from 'bunyan-format';
 
-import { is } from '../utils';
+import { is } from './is';
 
-import * as package$ from 'package.json';
+import * as package$ from '../../package.json';
 
 const loggers: { [key: string]: bunyan } = {};
 
@@ -89,7 +89,7 @@ function applyFormat(loggerOptions: bunyan.LoggerOptions) {
     return {};
   }
 
-  const formatOut = new BunyanFormat({ outputMode: 'short' });
+  const formatOut = bformat({ outputMode: 'short' });
   const logLevel = loggerOptions.ignoreLogLevel ? 'info' : process.env.LOG_LEVEL;
   const streams = [];
 

@@ -4,7 +4,6 @@ import * as HttpStatusCodes from 'http-status-codes';
 import { RegisterParamsFromReq } from '@src/routes/register/RegisterParamsFromReq';
 import { userService } from '@src/services';
 import { SendMailOptions } from 'nodemailer';
-import { RegisterParamsInterface } from './RegisterParamsFromReq';
 import { User } from '@src/models';
 import { CONFIG_MAILER_ACTIVATION_EMAIL_SUBJECT, CONFIG_MAILER_FROM, CONFIG_USER_SEND_EMAIL_ACTIVATION } from '@src/constants';
 import { mailService } from '@src/services/mailService';
@@ -12,8 +11,9 @@ import { templateService } from '@src/services/templateService';
 import { getLogger } from '@src/libs/logger';
 import { accessTokenService } from '@src/services/accessTokenService';
 import { AccessTokenScopes } from '@src/enums/AccessTokenScopes';
+import { RegisterParamsInterface } from './RegisterParamsFromReq';
 
-async function post(req: Request, res: Response, next: NextFunction) {
+async function post (req: Request, res: Response, next: NextFunction) {
   const logger = getLogger('api/register:post');
   let params: RegisterParamsInterface;
   let user: User | null;
@@ -41,7 +41,7 @@ async function post(req: Request, res: Response, next: NextFunction) {
   try {
     const accessToken = await accessTokenService.getForUser(
       user,
-      AccessTokenScopes.EmailValidation
+      AccessTokenScopes.EmailValidation,
     );
     const token = accessToken.get('jwt');
     const activationUrl = `${process.env.WA_BASE_URL}/api/activate-email?token=${token}`;
@@ -52,8 +52,8 @@ async function post(req: Request, res: Response, next: NextFunction) {
       html: await templateService.compile('email-activation', {
         activationUrl,
         firstName: params.firstName,
-        lastName: params.lastName
-      })
+        lastName: params.lastName,
+      }),
     };
 
     await mailService.send(mail);

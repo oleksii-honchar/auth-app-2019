@@ -85,7 +85,10 @@ module.exports = {
         '*.tsx',
         '*.json',
       ],
-      excludedFiles: '*.d.ts',
+      excludedFiles: [
+        '*.d.ts',
+        '*.js'
+      ],
     },
   ],
 };

@@ -13,32 +13,32 @@ const UserSchema = new Schema<User>(
   {
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     email: {
       type: String,
       required: true,
-      maxlength: 100
+      maxlength: 100,
     },
     passwordHash: {
       type: String,
       required: true,
-      maxlength: 60
+      maxlength: 60,
     },
     firstName: {
       type: String,
       required: true,
-      maxlength: 100
+      maxlength: 100,
     },
     lastName: {
       type: String,
       required: true,
-      maxlength: 100
+      maxlength: 100,
     },
     isEmailVerified: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   {
     toJSON: {
@@ -46,9 +46,9 @@ const UserSchema = new Schema<User>(
         ret.id = ret._id;
         delete ret._id;
         delete ret.passwordHash;
-      }
-    }
-  }
+      },
+    },
+  },
 
 );
 

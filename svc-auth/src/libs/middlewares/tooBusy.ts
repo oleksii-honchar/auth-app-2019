@@ -7,7 +7,7 @@ import { is } from '@src/utils';
 toobusy.maxLag(300);
 toobusy.interval(500);
 
-export function tooBusyMiddleware(req: Request, res: Response, next: NextFunction) {
+export function tooBusyMiddleware (req: Request, res: Response, next: NextFunction) {
   const free = is.falsy(toobusy());
 
   if (free) {

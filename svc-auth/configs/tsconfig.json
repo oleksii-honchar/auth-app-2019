@@ -30,7 +30,7 @@
       "services": [ "./services/*", "./services" ],
       "routes": [ "./routes/*", "./routes" ],
       "templates": [ "./templates/*", "./templates" ],
-      "assets": [ "./assets/*" ]
+      "assets": [ "./assets/*", "./assets" ]
     },
     "pretty": true,
     "removeComments": true, // Do not emit comments to output

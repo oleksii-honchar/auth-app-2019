@@ -1,10 +1,12 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import {
+  Router, Request, Response, NextFunction,
+} from 'express';
 
 import { is } from '@src/utils';
 
 const router = Router();
 
-function sendResponse(req: Request, res: Response, next: NextFunction) {
+function sendResponse (req: Request, res: Response, next: NextFunction) {
   if (res.template) {
     return res.render(res.template, res.opts);
   }

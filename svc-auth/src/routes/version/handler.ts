@@ -3,7 +3,7 @@ import * as HttpStatusCodes from 'http-status-codes';
 
 import * as package$ from 'package.json';
 
-function get(req: Request, res: Response, next: NextFunction) {
+function get (req: Request, res: Response, next: NextFunction) {
   const packageName = package$.name || 'not specified';
   const packageVersion = package$.version || 'not specified';
   res.body = `${packageName}:${packageVersion}`;

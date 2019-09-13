@@ -57,8 +57,8 @@ function defaultHandler (err: any, req: Request, res: Response, next: NextFuncti
   error.code = error.code || HttpStatusCodes.INTERNAL_SERVER_ERROR;
 
   if (
-    error.code === HttpStatusCodes.INTERNAL_SERVER_ERROR
-    || error.code === 'ETIMEDOUT'
+    error['code'] === HttpStatusCodes.INTERNAL_SERVER_ERROR
+    || error['code'] === 'ETIMEDOUT'
   ) {
     logger.error({ error });
     logger.error(error.stack);

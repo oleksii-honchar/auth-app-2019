@@ -11,6 +11,7 @@
     "build:loc": "bash scripts/build.loc.sh",
     "build:loc:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.loc.sh",
     "cm": "npx git-cz",
+    "check:all": "run-p lint types:check",
     "clean:dist": "rm -rf dist/static",
     "docker:build": "bash ./devops/scripts/build.sh",
     "docker:up": "bash ./devops/scripts/run.sh",
@@ -30,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn types:check && yarn lint:fix",
+      "pre-commit": "yarn check:all",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --config=./configs/commitlint.config.js"
     }
   },
@@ -39,11 +40,6 @@
       "path": "svc-auth/node_modules/cz-conventional-changelog"
     }
   },
-  "pre-commit": [
-    "types:check",
-    "lint:fix",
-    "lint"
-  ],
   "author": "Oleksii Honchar",
   "license": "MIT",
   "dependencies": {

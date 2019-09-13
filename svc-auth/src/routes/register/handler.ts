@@ -6,7 +6,6 @@ import { userService } from 'src/services/userService';
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
 
-
 async function post (req: Request, res: Response, next: NextFunction) {
   const logger = getLogger('api/register:post');
   let params: RegisterParamsInterface;
@@ -24,7 +23,7 @@ async function post (req: Request, res: Response, next: NextFunction) {
     return next(e);
   }
 
-  res.body = 'Successfully created';
+  res['body'] = 'Successfully created';
   res.statusCode = HttpStatusCodes.CREATED;
   return next();
 }

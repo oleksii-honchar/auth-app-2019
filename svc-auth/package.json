@@ -30,6 +30,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "yarn types:check && yarn lint:fix",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --config=./configs/commitlint.config.js"
     }
   },

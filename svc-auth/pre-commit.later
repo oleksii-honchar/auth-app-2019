@@ -1,1 +1,0 @@
-"pre-commit": "yarn types:check && yarn lint:fix && yarn lint",

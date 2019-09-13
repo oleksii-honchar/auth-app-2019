@@ -6,15 +6,16 @@ import { passwordService } from './passwordService';
 class UserService {
   private logger = getLogger('UserService');
 
-  public findUserByEmail(email: string) {
+  public findUserByEmail (email: string) {
     return User.findOne({ email });
   }
 
-  public async createUser(params: RegisterParamsInterface) {
-    delete params.passwordConfirmation;
-    params.passwordHash = await passwordService.generateHash(params.password);
+  public async createUser (params: RegisterParamsInterface) {
+    const data = { ...params };
+    delete data.passwordConfirmation;
+    data.passwordHash = await passwordService.generateHash(data.password);
 
-    return User.create(params);
+    return User.create(data);
   }
 }
 export const userService = new UserService();

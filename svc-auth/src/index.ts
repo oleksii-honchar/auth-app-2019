@@ -47,7 +47,7 @@ app.use(finalResponder.router);
 
 const server = http.createServer(app);
 
-async function start() {
+async function start () {
   await dbService.connect();
   await dbSeedService.bootstrapDb();
 

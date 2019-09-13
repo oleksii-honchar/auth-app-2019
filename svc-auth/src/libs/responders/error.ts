@@ -19,7 +19,7 @@ function default404Handler (req: Request, res: Response, next: NextFunction) {
     res.body = res.body || { error: message };
 
     const error = new Error(message);
-    error['code'] = res.statusCode;
+    error.code = res.statusCode;
     logger.warn({ error });
   }
   next();

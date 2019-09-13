@@ -1,4 +1,6 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import {
+  Router, Request, Response, NextFunction,
+} from 'express';
 import url from 'url';
 import path from 'path';
 import HttpStatusCodes from 'http-status-codes';
@@ -22,7 +24,7 @@ router.use(mountPoint, [
     }
 
     return next();
-  }
+  },
 ]);
 
 if (['stage', 'production'].indexOf(process.env.ENV_NAME!) < 0) {
@@ -32,9 +34,9 @@ if (['stage', 'production'].indexOf(process.env.ENV_NAME!) < 0) {
 
 router.use('*', (req, res, next) => {
   if (
-    req.route ||
-    res.statusCode === HttpStatusCodes.NOT_FOUND ||
-    res.statusCode === HttpStatusCodes.INTERNAL_SERVER_ERROR
+    req.route
+    || res.statusCode === HttpStatusCodes.NOT_FOUND
+    || res.statusCode === HttpStatusCodes.INTERNAL_SERVER_ERROR
   ) {
     return next();
   }

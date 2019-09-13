@@ -40,5 +40,5 @@ export const is = {
     }
 
     return is.object(value) && Object.keys(value).length === 0;
-  }
+  },
 };

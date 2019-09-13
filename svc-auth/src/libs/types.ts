@@ -12,6 +12,6 @@
  * const object = getAs<Foo>({}); // this won't
  * ```
  */
-export function getAs<T>(value: unknown): T {
+export function getAs<T> (value: unknown): T {
   return value as T;
 }

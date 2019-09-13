@@ -1,6 +1,16 @@
 console.log('[config:eslint] config loaded');
 
 module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    allowImportExportEverywhere: false,
+    codeFrame: false,
+    ecmaVersion: 2018,
+    errorOnUnknownASTType: true,
+    errorOnTypeScriptSyntacticAndSemanticIssues: true,
+    project: 'tsconfig.json',
+    sourceType: 'module'
+  },
   extends: [
     'airbnb-base',
   ],
@@ -25,6 +35,7 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
+    "import/no-unresolved": "error",
     'max-len': [
       'error',
       {
@@ -41,11 +52,6 @@ module.exports = {
     'jest/no-focused-tests': 1,
     'jest/no-identical-title': 2,
   },
-  settings: {
-    'import/resolver': {
-      'babel-module': {},
-    },
-  },
   env: {
     browser: true,
     node: true,
@@ -53,7 +59,6 @@ module.exports = {
     'jest/globals': true
   },
   globals: {
-    PKG: true,
     beforeEach: true,
     afterEach: true,
     describe: true,
@@ -61,34 +66,24 @@ module.exports = {
     expect: true,
   },
   plugins: [
-    'babel',
+    '@typescript-eslint',
     'jest',
     'json',
-    'node'
+    'node',
+    'import'
   ],
-  parser: 'babel-eslint',
-  parserOptions: {
-    allowImportExportEverywhere: false,
-    codeFrame: false,
-    ecmaVersion: 2018,
-    ecmaFeatures: {
-      modules: true,
-      jsx: true,
-      experimentalObjectRestSpread: true,
+  settings: {
+    'import/extensions': [".js",".jsx",".ts",".tsx"],
+    'import/parsers': {
+      '@typescript-eslint/parser': [".ts",".tsx"]
     },
-    sourceType: 'module',
+    'import/resolver': {
+      "typescript": {
+        directory: "./configs/tsconfig.json"
+      },
+      'node': {
+        'extensions': [".js",".jsx",".ts",".tsx"]
+      }
+    }
   },
-  overrides: [
-    {
-      files: [
-        '*.ts',
-        '*.tsx',
-        '*.json',
-      ],
-      excludedFiles: [
-        '*.d.ts',
-        '*.js'
-      ],
-    },
-  ],
 };

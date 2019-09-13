@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 
 class PasswordService {
   public saltRounds: number;
@@ -21,4 +21,4 @@ class PasswordService {
   }
 }
 
-export const pwdService = new PasswordService(10);
+export const passwordService = new PasswordService(10);

@@ -2,8 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 console.log('[config:webpack:snippet] Base loaded');
 
@@ -21,11 +20,6 @@ module.exports = (env) => ({
       'src',
       'node_modules',
     ],
-    plugins: [
-      new TsConfigPathsPlugin({
-        configFile: path.join(__dirname, '../../tsconfig.json')
-      })
-    ]
   },
   output: {
     path: path.join(__dirname, '../../dist'),

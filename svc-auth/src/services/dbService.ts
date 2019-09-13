@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-import { getLogger } from '../libs/logger';
+import { getLogger } from 'src/libs/logger';
 import { MONGOOSE_CONNECTED_STATE, MONGO_CONNECTION_PORT } from '../constants';
 
 class DbService {

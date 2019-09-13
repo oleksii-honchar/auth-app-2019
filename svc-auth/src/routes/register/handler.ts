@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import HttpStatusCodes from 'http-status-codes';
 
 import { RegisterParamsFromReq } from 'src/routes/register/RegisterParamsFromReq';
-import { userService } from 'src/services';
+import { userService } from 'src/services/userService';
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
 import { RegisterParamsInterface } from './RegisterParamsFromReq';

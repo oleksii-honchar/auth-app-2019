@@ -12,9 +12,11 @@ module.exports = {
       },
       {
         test: /\.[tj]sx?$/,
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            configFile: path.join(__dirname, '../babel.config.js')
+          },
         },
         exclude: [
           /\.(spec|e2e|d)\.[tj]sx?$/,

@@ -1,7 +1,7 @@
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
 import { RegisterParamsInterface } from 'src/routes/register/RegisterParamsFromReq';
-import { pwdService } from 'src/services/pwdService';
+import { passwordService } from './passwordService';
 
 class UserService {
   private logger = getLogger('UserService');
@@ -12,7 +12,7 @@ class UserService {
 
   public async createUser(params: RegisterParamsInterface) {
     delete params.passwordConfirmation;
-    params.passwordHash = await pwdService.generateHash(params.password);
+    params.passwordHash = await passwordService.generateHash(params.password);
 
     return User.create(params);
   }

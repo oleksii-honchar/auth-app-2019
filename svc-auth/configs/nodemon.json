@@ -1,5 +1,6 @@
 {
-  "watch": ["dist"],
-  "ext": "js",
-  "exec": "node --inspect=0.0.0.0:9002 dist/bundle.js"
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "ts-node --files -r tsconfig-paths/register ./src/index.ts"
 }

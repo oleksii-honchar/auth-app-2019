@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-const hbs = require('handlebars');
 const webpackMerge = require('webpack-merge');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 

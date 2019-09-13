@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { pick, isEmpty, defaults, omit, extend, has, get, isObject } from 'lodash';
-import Bunyan from 'bunyan';
-import BanyanFormat from 'bunyan-format';
+import * as Bunyan from 'bunyan';
+import * as BanyanFormat from 'bunyan-format';
 
 import { is } from 'src/libs/is';
 
-import package$ from '../../package.json';
+import * as pkg from '../../package.json';
 
 const loggers: { [key: string]: Bunyan } = {};
 
@@ -74,7 +74,7 @@ function errorSerializer(error: NodeJS.ErrnoException) {
 }
 
 const defaultOptions: Bunyan.LoggerOptions = {
-  name: package$.name,
+  name: pkg.name,
   level: 'error',
   serializers: {
     req: reqSerializer,
@@ -113,7 +113,7 @@ export function getLogger(
   loggerName?: string,
   loggerOptions?: Partial<Bunyan.LoggerOptions>
 ): Bunyan {
-  const name = loggerName || package$.name;
+  const name = loggerName || pkg.name;
   const logger = loggers[name];
 
   if (is.truthy(logger)) {

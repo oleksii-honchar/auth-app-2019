@@ -46,4 +46,7 @@ module.exports = (env) => ({
     __dirname: false,
     __filename: false
   },
+  watchOptions: {
+    aggregateTimeout: 3000,
+  } 
 });

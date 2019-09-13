@@ -9,7 +9,7 @@ export function verify (token: string) {
         return reject(error);
       }
 
-      resolve();
+      return resolve();
     });
   });
 }

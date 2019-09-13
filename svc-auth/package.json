@@ -19,7 +19,7 @@
     "launch:loc": "bash scripts/launch.loc.sh",
     "launch:prod": "bash scripts/launch.sh",
     "launch:prod:loc": "bash scripts/launch.prod.loc.sh",
-    "lint": "npx eslint src --config ./configs/eslint.config.js  --ext .ts,.tsx,.json",
+    "lint": "npx eslint src --config ./configs/eslint.config.js  --ext .ts,.tsx,.json --ignore-pattern '/node_modules/*' --ignore-pattern '**/*.d.ts' --ignore-pattern '**/*.spec.ts'",
     "lint:fix": "yarn lint --fix",
     "test": "jest --config ./configs/jest.config.js",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",

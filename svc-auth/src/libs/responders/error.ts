@@ -19,13 +19,16 @@ function default404Handler (req: Request, res: Response, next: NextFunction) {
     res.body = res.body || { error: message };
 
     const error = new Error(message);
-    error.code = res.statusCode;
+    error['code'] = res.statusCode;
     logger.warn({ error });
   }
   next();
 }
 
-function assertionErrorHandler (error: any, req: Request, res: Response, next: NextFunction) {
+function assertionErrorHandler (
+  err: any, req: Request, res: Response, next: NextFunction,
+) {
+  let error = err;
   const isAssertionError = error instanceof AssertionError;
 
   if (is.falsy(isAssertionError)) {
@@ -40,7 +43,7 @@ function assertionErrorHandler (error: any, req: Request, res: Response, next: N
   res.statusCode = error.code;
   res.body = error;
 
-  if (error.code === HttpStatusCodes.INTERNAL_SERVER_ERROR) {
+  if (err.code === HttpStatusCodes.INTERNAL_SERVER_ERROR) {
     logger.error({ error });
   } else {
     logger.warn({ error });
@@ -49,12 +52,13 @@ function assertionErrorHandler (error: any, req: Request, res: Response, next: N
   return next();
 }
 
-function defaultHandler (error: any, req: Request, res: Response, next: NextFunction) {
+function defaultHandler (err: any, req: Request, res: Response, next: NextFunction) {
+  const error = err;
   error.code = error.code || HttpStatusCodes.INTERNAL_SERVER_ERROR;
 
   if (
     error.code === HttpStatusCodes.INTERNAL_SERVER_ERROR
-      || error.code === 'ETIMEDOUT'
+    || error.code === 'ETIMEDOUT'
   ) {
     logger.error({ error });
     logger.error(error.stack);

@@ -26,7 +26,7 @@ module.exports = {
     ],
     'no-unused-vars': 'off',
     'import/prefer-default-export': 'off',
-    "import/no-unresolved": "error",
+    'import/no-unresolved': 'error',
     'max-len': [
       'error',
       {
@@ -38,6 +38,7 @@ module.exports = {
         ignoreTemplateLiterals: true,
       },
     ],
+    'no-underscore-dangle': ['error', { 'allow': ['_id', '_headers'] }],
     'quote-props': ['error', 'consistent-as-needed'],
     'jest/no-disabled-tests': 1,
     'jest/no-focused-tests': 1,
@@ -64,16 +65,16 @@ module.exports = {
     'import'
   ],
   settings: {
-    'import/extensions': [".js",".jsx",".ts",".tsx"],
+    'import/extensions': ['.js','.jsx','.ts','.tsx'],
     'import/parsers': {
-      '@typescript-eslint/parser': [".ts",".tsx"]
+      '@typescript-eslint/parser': ['.ts','.tsx']
     },
     'import/resolver': {
-      "typescript": {
-        directory: "./configs/tsconfig.json"
+      'typescript': {
+        directory: './configs/tsconfig.json'
       },
       'node': {
-        'extensions': [".js",".jsx",".ts",".tsx"]
+        'extensions': ['.js','.jsx','.ts','.tsx']
       }
     }
   },

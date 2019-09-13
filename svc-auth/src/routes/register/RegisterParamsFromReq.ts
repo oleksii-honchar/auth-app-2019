@@ -45,7 +45,7 @@ export class RegisterParamsFromReq {
         this.schema,
         ((err: Function, val: RegisterParamsInterface) => {
           if (err) return reject(err);
-          resolve(val);
+          return resolve(val);
         }) as any,
       );
     });

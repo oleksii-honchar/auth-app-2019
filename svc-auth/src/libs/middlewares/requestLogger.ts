@@ -7,7 +7,9 @@ const logger = getLogger();
 
 const MAX_BODY_SIZE = 400;
 
-export function requestLoggerMiddleware (req: Request, res: Response, next: NextFunction) {
+export function requestLoggerMiddleware (
+  req: Request, res: Response, next: NextFunction,
+) {
   const headerName = 'x-request-id';
   const id = req.headers[headerName] || uuid.v4();
 

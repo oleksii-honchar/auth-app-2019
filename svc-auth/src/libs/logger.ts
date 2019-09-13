@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import {
-  pick, isEmpty, defaults, omit, extend, has, get, isObject,
+  pick, defaults, omit, extend, has, get,
 } from 'lodash';
 import * as Bunyan from 'bunyan';
 import * as BanyanFormat from 'bunyan-format';
@@ -20,15 +20,15 @@ function reqSerializer (req: Request) {
     url: req.url,
   };
 
-  if (!isEmpty(req.query)) {
+  if (!is.empty(req.query)) {
     res.query = req.query;
   }
 
-  if (!isEmpty(req.params)) {
+  if (!is.empty(req.params)) {
     res.params = req.params;
   }
 
-  if (!isEmpty(req.body)) {
+  if (!is.empty(req.body)) {
     res.body = req.body;
   }
 
@@ -46,7 +46,7 @@ function resSerializer (res: Response) {
 }
 
 function errorSerializer (error: NodeJS.ErrnoException) {
-  if (!isObject(error)) {
+  if (!is.object(error)) {
     return error;
   }
 
@@ -103,7 +103,9 @@ function applyFormat (loggerOptions: Bunyan.LoggerOptions) {
   });
 }
 
-function createLogger (name: string, loggerOptions?: Partial<Bunyan.LoggerOptions>): Bunyan {
+function createLogger (
+  name: string, loggerOptions?: Partial<Bunyan.LoggerOptions>,
+): Bunyan {
   let options = defaults(loggerOptions, defaultOptions);
   options.name = name;
   applyFormat(options);

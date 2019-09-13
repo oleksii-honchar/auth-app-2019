@@ -43,9 +43,11 @@ const UserSchema = new Schema<User>(
   {
     toJSON: {
       transform (doc, ret) {
-        ret.id = ret._id;
-        delete ret._id;
-        delete ret.passwordHash;
+        const res = { ...ret };
+        res.id = res._id;
+        delete res._id;
+        delete res.passwordHash;
+        return res;
       },
     },
   },

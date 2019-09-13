@@ -15,7 +15,7 @@ export function tooBusyMiddleware (req: Request, res: Response, next: NextFuncti
   }
 
   const error = new Error('I\'m busy right now, sorry.');
-  error.code = HttpStatusCodes.SERVICE_UNAVAILABLE;
+  error['code'] = HttpStatusCodes.SERVICE_UNAVAILABLE;
   delete error.stack;
   return next(error);
 }

@@ -19,7 +19,7 @@ module.exports = {
           },
         },
         exclude: [
-          /\.(spec|e2e)\.[tj]sx?$/,
+          /\.(spec|e2e|d)\.[tj]sx?$/,
           /node_modules/,
         ],
       },
@@ -96,7 +96,7 @@ module.exports = {
       }
     ],
     noParse: [
-      /\.(spec|e2e)\.jsx?$/,
+      /\.(spec|e2e|d)\.[tj]sx?$/,
       /LICENSE/,
       /README.md/,
     ],

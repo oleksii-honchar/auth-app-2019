@@ -19,21 +19,12 @@ module.exports = {
       'error',
       'always',
     ],
-    'class-methods-use-this': ['error', {
-      exceptMethods: [
-        'render',
-      ],
-    }],
+    'class-methods-use-this': 'off',
     'function-paren-newline': [
       'error',
       'consistent',
     ],
-    'no-unused-vars': [
-      'error',
-      {
-        varsIgnorePattern: 'React',
-      },
-    ],
+    'no-unused-vars': 'off',
     'import/prefer-default-export': 'off',
     "import/no-unresolved": "error",
     'max-len': [

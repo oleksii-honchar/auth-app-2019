@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import HttpStatusCodes from 'http-status-codes';
 
-import { RegisterParamsFromReq } from 'src/routes/register/RegisterParamsFromReq';
+import { RegisterParamsFromReq, RegisterParamsInterface } from 'src/routes/register/RegisterParamsFromReq';
 import { userService } from 'src/services/userService';
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
-import { RegisterParamsInterface } from './RegisterParamsFromReq';
+
 
 async function post (req: Request, res: Response, next: NextFunction) {
   const logger = getLogger('api/register:post');

@@ -39,10 +39,6 @@
   ],
   "exclude": [ // relative to ./configs/tsconfig.json
     "../node_modules",
-    "../src/**/*.spec.ts",
-    "../src/**/*.spec.tsx",
-    "../src/**/*.spec.js",
-    "../src/**/*.test.js",
     "../dist",
     "../docs",
     "../coverage",

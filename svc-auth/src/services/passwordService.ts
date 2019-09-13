@@ -12,9 +12,9 @@ class PasswordService {
       bcrypt.genSalt(this.saltRounds, (err: Error, salt: string) => {
         if (err) return reject(err);
 
-        bcrypt.hash(pwd, salt, (err, hash) => {
-          if (err) return reject(err);
-          resolve(hash);
+        return bcrypt.hash(pwd, salt, (err1, hash) => {
+          if (err1) return reject(err1);
+          return resolve(hash);
         });
       });
     });

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-source ./configs/deployment.env
+source ./configs/envs/deployment.env
 source ./devops/local/scripts/load-env.sh
 
-envFile="./configs/production.loc.env"
+envFile="./configs/envs/production.loc.env"
 export $(grep -v '^#' $envFile | xargs)
 
 docker-compose -f ./devops/docker/docker-compose/production.loc.yml down

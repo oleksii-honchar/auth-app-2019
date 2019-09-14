@@ -8,7 +8,7 @@ NC='\033[0m' # No Color
 
 set -euo pipefail
 
-source ./configs/deployment.env
+source ./configs/envs/deployment.env
 source ./devops/ci/scripts/get-latest-version.sh
 
 start=$SECONDS

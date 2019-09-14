@@ -13,10 +13,10 @@
     "cm": "npx git-cz",
     "check:all": "run-p lint types:check",
     "clean:dist": "rm -rf dist/static",
-    "docker:build": "bash ./devops/scripts/build.sh",
-    "docker:up": "bash ./devops/scripts/run.sh",
-    "docker:up:loc": "bash ./devops/scripts/run.loc.sh",
-    "launch": "npm run launch:prod",
+    "docker:build": "bash devops/scripts/build-docker.sh",
+    "docker:up": "bash ./devops/ci/scripts/up.sh",
+    "docker:up:loc": "bash ./devops/ci/scripts/up.loc.sh",
+    "launch": "yarn launch:prod",
     "launch:loc": "bash scripts/launch.loc.sh",
     "launch:prod": "bash scripts/launch.sh",
     "launch:prod:loc": "bash scripts/launch.prod.loc.sh",
@@ -120,6 +120,6 @@
     "webpack-merge": "4.2.2"
   },
   "engines": {
-    "node": "12.7"
+    "node": "12"
   }
 }

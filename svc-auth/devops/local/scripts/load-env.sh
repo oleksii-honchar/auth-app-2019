@@ -7,7 +7,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
 if [ -f 'project.env' ]; then
-    printf "Gonna load root .env file ";
+    printf "Gonna load 'project.env' file ";
     source 'project.env' && \
     export $(grep -o '^[^#]*' project.env);
 

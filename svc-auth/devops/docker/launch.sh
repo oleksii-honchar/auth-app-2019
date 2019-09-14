@@ -3,8 +3,8 @@ set -e
 
 cd /usr/src/svc
 
-if [[ "$NODE_ENV" == "development" ]]; then
-    /usr/bin/npm run svc:launch:loc
+if [[ "$ENV_NAME" == "local" ]]; then
+    yarn start
 else
-    /usr/bin/npm run svc:launch
+    yarn launch
 fi

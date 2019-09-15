@@ -26,7 +26,6 @@ async function processRegistration (req: Request) {
 }
 
 async function post (req: Request, res: Response, next: NextFunction) {
-
   try {
     await processRegistration(req);
   } catch (e) {

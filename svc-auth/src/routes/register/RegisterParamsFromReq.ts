@@ -13,7 +13,7 @@ export interface RegisterParamsInterface {
 export class RegisterParamsFromReq {
   private req: Request;
 
-  private schema: any;
+  private readonly schema: any;
 
   constructor (req: Request) {
     this.req = req;

@@ -38,6 +38,11 @@ module.exports = (env) => ({
     new LoaderOptionsPlugin({
       debug: process.env.NODE_ENV !== 'production',
     }),
+    new CopyWebpackPlugin([
+      { from: './src/assets', to: './assets', ignore: ['*.js.map', '*.css.map'] },
+      { from: './src/swagger.json', to: './assets/swagger.json' },
+    ])
+
     // new webpack.optimize.ModuleConcatenationPlugin()
   ],
   node: { // for wa should be false

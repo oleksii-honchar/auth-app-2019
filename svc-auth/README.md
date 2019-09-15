@@ -4,14 +4,14 @@
 
 - [svc-auth](#svc-auth)
 - [Getting started](#getting-started)
-  * [Setup dependencies](#setup-dependencies)
-  * [Development dependencies](#development-dependencies)
+	* [Setup dependencies](#setup-dependencies)
+	* [Development dependencies](#development-dependencies)
 	    + [Docker](#docker)
-  * [Localhost domains](#localhost-domains)
+	* [Localhost domains](#localhost-domains)
 - [Launch](#launch)
 - [Development](#development)
-  * [Scripts](#scripts)
-  * [Watch & build](#watch--build)
+	* [Scripts](#scripts)
+	* [Watch & build](#watch--build)
   
   
 <!-- tocstop -->

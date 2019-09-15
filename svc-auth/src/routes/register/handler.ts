@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import HttpStatusCodes from 'http-status-codes';
+import * as HttpStatusCodes from 'http-status-codes';
 
 import {
   RegisterParamsFromReq,
@@ -17,7 +17,6 @@ async function processRegistration (req: Request) {
 
   logger.debug('validating params...')
   params = await new RegisterParamsFromReq(req).validate();
-
 
   user = await userService.findUserByEmail(params.email);
   if (user) throw new Error('Already exists');

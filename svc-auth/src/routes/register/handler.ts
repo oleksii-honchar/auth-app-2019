@@ -22,7 +22,7 @@ async function processRegistration (req: Request) {
   if (user) throw new Error('Already exists');
 
   logger.debug('creating new one...')
-  user = await userService.createUser(params);
+  await userService.createUser(params);
 }
 
 async function post (req: Request, res: Response, next: NextFunction) {

@@ -3,6 +3,7 @@ import * as tooBusy from 'toobusy-js';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import * as passport from 'passport';
 
 import { router } from './routes';
 import { getLogger } from './libs/logger';
@@ -38,6 +39,7 @@ app.use(cookieParser());
 app.use(requestLoggerMiddleware);
 app.use(bodyParser.json({ limit: '25mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
 app.use(noCacheMiddleware);
 
 app.use(router);

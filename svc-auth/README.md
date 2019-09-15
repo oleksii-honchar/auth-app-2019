@@ -12,8 +12,7 @@
 - [Development](#development)
 	* [Scripts](#scripts)
 	* [Watch & build](#watch--build)
-  
-  
+    
 <!-- tocstop -->
 
   

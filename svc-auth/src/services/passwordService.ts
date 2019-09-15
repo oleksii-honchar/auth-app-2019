@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
 
 class PasswordService {
   public saltRounds: number;
@@ -14,6 +14,7 @@ class PasswordService {
 
         return bcrypt.hash(pwd, salt, (err1, hash) => {
           if (err1) return reject(err1);
+
           return resolve(hash);
         });
       });

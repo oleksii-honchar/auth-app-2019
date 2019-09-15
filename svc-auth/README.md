@@ -4,14 +4,14 @@
 
 - [svc-auth](#svc-auth)
 - [Getting started](#getting-started)
-  * [Setup dependencies](#setup-dependencies)
-  * [Development dependencies](#development-dependencies)
+	* [Setup dependencies](#setup-dependencies)
+	* [Development dependencies](#development-dependencies)
 	    + [Docker](#docker)
-  * [Localhost domains](#localhost-domains)
+	* [Localhost domains](#localhost-domains)
 - [Launch](#launch)
 - [Development](#development)
-  * [Scripts](#scripts)
-  * [Watch & build](#watch--build)
+	* [Scripts](#scripts)
+	* [Watch & build](#watch--build)
   
   
 <!-- tocstop -->
@@ -138,3 +138,15 @@ yarn start
 ```
 
 It will up mongo & service container and start nodemon inside. You need to have docker build before or it will be downloaded (@latest).
+
+## CI/CD
+
+There is 5 basic environment expected: 
+
+- LOCAL
+- DEVELOPMENT
+- QA
+- STAGE - no `/docs` & `/swagger-editor` routes starting from this env.
+- PRODUCTION
+
+Environment variable `ENV_NAME` used to specify for executeds apps in which env it runs.

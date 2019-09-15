@@ -8,7 +8,7 @@ import { STATIC_ASSETS_PATH } from 'src/constants';
 export const swaggerEditorRouter = Router();
 
 swaggerEditorRouter.all('/swagger.json', (req, res, next) => {
-  const filePath = path.join(STATIC_ASSETS_PATH, '../../swagger.json');
+  const filePath = path.join(STATIC_ASSETS_PATH, '../swagger.json');
   res.sendFile(filePath);
   return next();
 });

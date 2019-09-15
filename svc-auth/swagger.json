@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "SCM svc-auth",
-    "version": "2.0.0",
-    "title": "SCM svc-auth"
+    "description": "AuthApp service",
+    "version": "0.0.0",
+    "title": "svc-auth"
   },
   "basePath": "/",
   "schemes": [

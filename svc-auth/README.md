@@ -1,5 +1,22 @@
 # svc-auth
 
+<!-- toc -->
+
+- [svc-auth](#svc-auth)
+- [Getting started](#getting-started)
+  * [Setup dependencies](#setup-dependencies)
+  * [Development dependencies](#development-dependencies)
+	    + [Docker](#docker)
+  * [Localhost domains](#localhost-domains)
+- [Launch](#launch)
+- [Development](#development)
+  * [Scripts](#scripts)
+  * [Watch & build](#watch--build)
+  
+  
+<!-- tocstop -->
+
+  
 # Getting started
 
 ## Setup dependencies
@@ -54,7 +71,9 @@ Please reopen your terminal in order to access installed cli tools.
 Please add this host to the local `/etc/hosts`. This will allow to work properly nginx & CORS
 
 ```bash
-127.0.0.1 auth-app-loc.dev.me
+127.0.0.1 wa-loc.dev.me
+127.0.0.1 svc-auth-loc.dev.me
+
 ```
 
 # Launch
@@ -80,6 +99,12 @@ yarn install
 yarn docker:build
 yarn docker:up:prod:loc
 ```
+
+Default urls: 
+
+- `http://svc-auth-loc.dev.me:9000/api/version`
+- `http://svc-auth-loc.dev.me:9000/docs`
+- `http://svc-auth-loc.dev.me:9000/swagger-editor`
 
 # Development
 

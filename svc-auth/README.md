@@ -77,7 +77,8 @@ It's time to install dependencies and start app:
 
 ```bash
 yarn install
-yarn start
+yarn docker:build
+yarn docker:up:prod:loc
 ```
 
 # Development
@@ -94,11 +95,21 @@ There is a set of scripts defined in package.json to help with day-to-day jobs:
 - `cm`: cli commitizen commit
 - `check:all`: check ts types & eslint
 - `docker:build`: build docker images
-- `docker:up` : ups docker compose in prod:loc mode
 - `docker:up:loc`: ups docker compose in loc mode 
+- `docker:up:prod:loc` : ups docker compose in prod:loc mode
 - `launch` -> `launch:prod`: prod launch
 - `launch:loc`: local launch with watchers 
 - `launch:prod:loc`: prod:loc mode launch from `./dist` folder for bundled app 
 - `lint` & `lint:fix`: eslint & fix
 - `test:*`: all test stuff
 - `types:*`: type checking stuff
+
+## Watch & build
+
+To run your code via docker with watch & debug option you can use script:
+
+```bash
+yarn start
+```
+
+It will up mongo & service container and start nodemon inside. You need to have docker build before or it will be downloaded (@latest).

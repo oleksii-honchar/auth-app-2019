@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "start": "run-p launch:loc types:watch",
+    "start": "yarn docker:up:loc",
     "prebuild": "yarn clean:dist",
     "build": "bash scripts/build.sh",
     "build:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.sh",
@@ -14,8 +14,8 @@
     "check:all": "run-p lint types:check",
     "clean:dist": "rm -rf dist/static",
     "docker:build": "bash devops/scripts/build-docker.sh",
-    "docker:up": "bash ./devops/ci/scripts/up.sh",
     "docker:up:loc": "bash ./devops/ci/scripts/up.loc.sh",
+    "docker:up:prod:loc": "bash ./devops/ci/scripts/up.prod.loc.sh",
     "launch": "yarn launch:prod",
     "launch:loc": "bash scripts/launch.loc.sh",
     "launch:prod": "bash scripts/launch.sh",

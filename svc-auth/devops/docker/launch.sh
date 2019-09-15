@@ -4,7 +4,7 @@ set -e
 cd /usr/src/svc
 
 if [[ "$ENV_NAME" == "local" ]]; then
-    yarn start
+    yarn launch:loc
 else
     yarn launch
 fi

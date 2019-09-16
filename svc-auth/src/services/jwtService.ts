@@ -5,6 +5,9 @@ import { createCipheriv, Binary, createDecipheriv } from 'crypto';
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
 
+/**
+ * Generate & verify jwt token
+ */
 class JwtService {
   private logger = getLogger('jwtService');
   private readonly apiSecretKey: string;
@@ -27,7 +30,7 @@ class JwtService {
         },
         this.apiSecretKey,
         {
-          expiresIn: this.tokenTtl
+          expiresIn: this.tokenTtl,
         },
         (err, token) => {
           if (err) return reject(err);
@@ -36,27 +39,40 @@ class JwtService {
           const encryptedToken = this.encrypt(token);
           this.logger.debug('generate():encrypted');
           resolve(encryptedToken);
-        });
+        },
+      );
     });
   }
 
-  public encrypt(payload: string) {
+  public verify (token: string) {
+    return new Promise((resolve, reject) => {
+      jwt.verify(token, this.apiSecretKey, (error: jwt.VerifyErrors) => {
+        if (error) {
+          return reject(error);
+        }
+
+        return resolve();
+      });
+    });
+  }
+
+  private encrypt (payload: string) {
     const cipher = createCipheriv(this.algorithm, this.apiSecretKey, this.iv);
     const encrypted = cipher.update(payload);
     const res = Buffer.concat([
       encrypted as unknown as Buffer,
-      cipher.final() as unknown as Buffer
+      cipher.final() as unknown as Buffer,
     ]);
     return res.toString('hex');
   }
 
-  public decrypt(payload: string) {
+  private decrypt (payload: string) {
     const encryptedText: Buffer = Buffer.from(payload, 'hex');
     const decipher = createDecipheriv(this.algorithm, this.apiSecretKey, this.iv);
     const decrypted = decipher.update(encryptedText as unknown as Binary);
     const res = Buffer.concat([
-      decrypted  as unknown as Buffer,
-      decipher.final() as unknown as Buffer
+      decrypted as unknown as Buffer,
+      decipher.final() as unknown as Buffer,
     ]);
     return res.toString();
   }
@@ -64,5 +80,5 @@ class JwtService {
 
 export const jwtService = new JwtService(
   process.env.API_SECRET_KEY as string,
-  parseInt(process.env.JWT_TTL_SECONDS as string, 10)
+  parseInt(process.env.JWT_TTL_SECONDS as string, 10),
 );

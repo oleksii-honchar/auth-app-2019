@@ -1,9 +1,12 @@
 import { User } from 'src/models';
-import { AccessToken } from 'src/models/AccessToken';
-import { jwtService } from 'src/services/jwtService';
+import { AccessToken } from 'src/models';
+import { jwtService } from 'src/services';
 import { AccessTokenScopes } from 'src/enums/AccessTokenScopes';
 
-class AccessTokenService {
+/**
+ * Data provider service for AccessToken
+ */
+class AccessTokenRepository {
   private ttl: number;
 
   constructor (ttl: number) {
@@ -17,11 +20,11 @@ class AccessTokenService {
 
     return AccessToken.create({
       user,
-      jwt: await jwtService.generate(user)
+      jwt: await jwtService.generate(user),
     });
   }
 }
 
-export const accessTokenService = new AccessTokenService(
-  parseInt(process.env.ACCESS_TOKEN_TTL_SECONDS as string, 10)
+export const accessTokenService = new AccessTokenRepository(
+  parseInt(process.env.ACCESS_TOKEN_TTL_SECONDS as string, 10),
 );

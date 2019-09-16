@@ -28,6 +28,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'import/prefer-default-export': 'off',
     'import/no-unresolved': 'error',
+    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
     'max-len': [
       'error',
       {

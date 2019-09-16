@@ -1,5 +1,8 @@
 import * as bcrypt from 'bcryptjs';
 
+/**
+ * Generate hash for pwd & compare
+ */
 class PasswordService {
   public saltRounds: number;
 

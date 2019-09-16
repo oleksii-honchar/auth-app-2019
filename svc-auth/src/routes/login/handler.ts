@@ -8,7 +8,7 @@ async function processLogin (req: Request) {
   let user: User | null;
 
   const logger = getLogger('api/login:post');
-  logger.debug('create jwt token')
+  logger.debug('create jwt token');
 }
 
 async function post (req: Request, res: Response, next: NextFunction) {

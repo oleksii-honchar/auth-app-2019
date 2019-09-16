@@ -3,9 +3,9 @@ import * as HttpStatusCodes from 'http-status-codes';
 
 import {
   RegisterParamsFromReq,
-  RegisterParamsInterface
+  RegisterParamsInterface,
 } from 'src/routes/register/RegisterParamsFromReq';
-import { userService } from 'src/services/userService';
+import { userRepository } from 'src/repositories';
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
 
@@ -15,14 +15,14 @@ async function processRegistration (req: Request) {
 
   const logger = getLogger('api/register:post');
 
-  logger.debug('validating params...')
+  logger.debug('validating params...');
   params = await new RegisterParamsFromReq(req).validate();
 
-  user = await userService.findUserByEmail(params.email);
+  user = await userRepository.findUserByEmail(params.email);
   if (user) throw new Error('Already exists');
 
-  logger.debug('creating new one...')
-  await userService.createUser(params);
+  logger.debug('creating new one...');
+  await userRepository.createUser(params);
 }
 
 async function post (req: Request, res: Response, next: NextFunction) {

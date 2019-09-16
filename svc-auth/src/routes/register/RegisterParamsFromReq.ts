@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import * as joi from '@hapi/joi';
 
-import { getLogger } from "src/libs/logger";
+import { getLogger } from 'src/libs/logger';
 import { is } from 'src/libs/is';
 
 export interface RegisterParamsInterface {
@@ -15,9 +15,11 @@ export interface RegisterParamsInterface {
 
 export class RegisterParamsFromReq {
   private req: Request;
+
   private rawParams: any;
 
   private readonly logger: any;
+
   private readonly schema: any;
 
   constructor (req: Request) {
@@ -29,16 +31,16 @@ export class RegisterParamsFromReq {
     paramsSource = is.empty(this.req.params) ? paramsSource : 'params';
     paramsSource = is.empty(this.req.query) ? paramsSource : 'query';
 
-    this.logger.debug(`"${paramsSource}" used to get params`)
+    this.logger.debug(`"${paramsSource}" used to get params`);
 
     if (is.empty(paramsSource)) {
       this.rawParams = {};
-      this.logger.warn(`req.body/query/params empty`)
+      this.logger.warn('req.body/query/params empty');
     } else {
       this.rawParams = this.req[paramsSource];
     }
 
-    this.logger.debug('create schema...')
+    this.logger.debug('create schema...');
     this.schema = joi.object().keys({
       email: joi.string().email({ minDomainSegments: 2 }).max(100).required(),
       password: joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
@@ -60,10 +62,10 @@ export class RegisterParamsFromReq {
       lastName: this.rawParams.lastName,
     };
 
-    this.logger.debug('validate params...')
+    this.logger.debug('validate params...');
 
 
-    const { error , value } = await this.schema.validate(params);
+    const { error, value } = await this.schema.validate(params);
     if (error) {
       throw error;
     }

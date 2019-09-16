@@ -24,6 +24,7 @@ logger.info(`[ENV_NAME = ${process.env.ENV_NAME}]`);
 logger.info(`[JWT_TTL_SECONDS = ${process.env.JWT_TTL_SECONDS}]`);
 logger.info(`[LOG_LEVEL = ${process.env.LOG_LEVEL}]`);
 logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
+logger.info(`[MONGO_PORT = ${process.env.MONGO_PORT}]`);
 logger.info(`[NODE_ENV = ${process.env.NODE_ENV}]`);
 logger.info(`[SVC_PORT = ${port}]`);
 logger.info(`[SVC_MOUNT_POINT = ${process.env.SVC_MOUNT_POINT}]`);

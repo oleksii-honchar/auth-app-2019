@@ -5,5 +5,5 @@ source ./devops/local/scripts/load-env.sh
 envFile="./configs/envs/local.env"
 export $(grep -v '^#' $envFile | xargs)
 
-docker-compose -f ./devops/docker/docker-compose/local.yml down
-docker-compose -f ./devops/docker/docker-compose/local.yml up
+docker-compose -f ./configs/docker-compose/local.yml down
+docker-compose -f ./configs/docker-compose/local.yml up

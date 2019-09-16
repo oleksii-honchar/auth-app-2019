@@ -18,12 +18,15 @@ process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'error';
 const logger = getLogger('APP-SVC', { ignoreLogLevel: true });
 const port = process.env.SVC_PORT || 4000;
 
+logger.info(`[ACCESS_TOKEN_TTL_SECONDS = ${process.env.ACCESS_TOKEN_TTL_SECONDS}]`);
+logger.info(`[API_SECRET_KEY = ${process.env.API_SECRET_KEY}]`);
 logger.info(`[ENV_NAME = ${process.env.ENV_NAME}]`);
+logger.info(`[JWT_TTL_SECONDS = ${process.env.JWT_TTL_SECONDS}]`);
 logger.info(`[LOG_LEVEL = ${process.env.LOG_LEVEL}]`);
+logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
 logger.info(`[NODE_ENV = ${process.env.NODE_ENV}]`);
 logger.info(`[SVC_PORT = ${port}]`);
 logger.info(`[SVC_MOUNT_POINT = ${process.env.SVC_MOUNT_POINT}]`);
-logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
 logger.info(`[WA_BASE_URL = ${process.env.WA_BASE_URL}]`);
 
 logger.info(`Starting app [${pkg.name}] ...`);

@@ -5,7 +5,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-source ./configs/deployment.env
+source ./configs/envs/deployment.env
 
 printf "${LBLUE}Login to registry:${NC} ${DOCKER_REGISTRY_HOST}\n"
 docker login -u="$DOCKER_REGISTRY_USER" -p="$DOCKER_REGISTRY_PWD" $DOCKER_REGISTRY_HOST

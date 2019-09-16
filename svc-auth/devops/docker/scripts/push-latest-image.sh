@@ -6,7 +6,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-source ./configs/deployment.env
+source ./configs/envs/deployment.env
 source ./devops/ci/scripts/get-latest-version.sh
 
 printf "${LBLUE}Check version and push if latest${NC}\n"

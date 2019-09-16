@@ -33,7 +33,7 @@ async function post (req: Request, res: Response, next: NextFunction) {
     return next(e);
   }
 
-  res.body = 'Successfully created';
+  res.body = { message: 'Successfully created' };
   res.statusCode = HttpStatusCodes.CREATED;
   return next();
 }

@@ -19,7 +19,7 @@
         "description": "text response with app version received",
         "operationId": "version",
         "produces": [
-          "text/plain; charset=utf-8"
+          "application/json; charset=utf-8"
         ],
         "responses": {
           "200": {
@@ -41,7 +41,7 @@
         "description": "New user created and activation email send",
         "operationId": "register",
         "produces": [
-          "text/plain; charset=utf-8"
+          "application/json; charset=utf-8"
         ],
         "consumes": [
           "application/x-www-form-urlencoded"
@@ -103,6 +103,72 @@
             "schema": {
               "type": "string",
               "example": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "tags": [
+          "login"
+        ],
+        "summary": "Login existing user",
+        "description": "Access token created and provided with response",
+        "operationId": "login",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "description": "New user email"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "required": true,
+            "description": "Password"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully logged in",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "token": {
+                  "type": "string"
+                }
+              }
+            },
+            "examples": {
+              "message": "Successfully logged in",
+              "token": "0c18182e0b6e7739fdea1abbc11aaba51c94f2d807bcf4c3ef06a8e8d9faa580924c9cac3afa60773fbe3ebb1b29905d071d6ce9fb10a6222c4e09d9800dd0c7801c404202b1d843d29fcd7c9cccb90e2fa45b8639f1664a9557d270ffeb6085b82da89af866792ebed90ee0c86becd1ae335af475fa1225f78dd01b077e3ce89a244c0bf3ca98c995931315ba66fca242f5d513b298d428bc2a430d0eb2d838e1d972534d032ccfbb809eac90551eb3bb460"
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "string",
+              "example": "Unauthorized"
+            }
+          },
+          "422": {
+            "description": "Unprocessible entity",
+            "schema": {
+              "type": "string",
+              "example": "Unprocessible entity"
             }
           }
         }

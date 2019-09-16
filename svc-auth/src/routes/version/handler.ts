@@ -6,7 +6,7 @@ import * as pkg from 'package.json';
 function get (req: Request, res: Response, next: NextFunction) {
   const packageName = pkg.name || 'not specified';
   const packageVersion = pkg.version || 'not specified';
-  res.body = `${packageName}:${packageVersion}`;
+  res.body = { version: `${packageName}:${packageVersion}` };
   res.statusCode = HttpStatusCodes.OK;
   next();
 }

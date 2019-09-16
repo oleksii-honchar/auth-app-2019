@@ -7,7 +7,7 @@ class UserRepository {
   private logger: any;
 
   constructor () {
-    this.logger = getLogger('UserService');
+    this.logger = getLogger('UserRepository');
   }
 
   public findUserByEmail (email: string) {

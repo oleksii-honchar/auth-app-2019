@@ -173,13 +173,81 @@
           }
         }
       }
+    },
+    "/api/users/current": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Get current user",
+        "description": "Get current user json by auth token",
+        "operationId": "users",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "text/plain; charset=utf-8"
+        ],
+        "responses": {
+          "201": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "string",
+              "example": "Unauthorized"
+            }
+          },
+          "422": {
+            "description": "Unprocessible entity",
+            "schema": {
+              "type": "string",
+              "example": "Unprocessible entity"
+            }
+          }
+        }
+      }
     }
   },
   "securityDefinitions": {
-    "bearerAuth": {
+    "Bearer": {
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isEmailVerified": {
+          "type": "boolean"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
     }
   }
 }

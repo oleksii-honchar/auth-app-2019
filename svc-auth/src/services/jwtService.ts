@@ -44,16 +44,26 @@ class JwtService {
     });
   }
 
-  public verify (token: string) {
-    return new Promise((resolve, reject) => {
-      jwt.verify(token, this.apiSecretKey, (error: jwt.VerifyErrors) => {
-        if (error) {
-          return reject(error);
-        }
+  public verify (encryptedJwtToken: string) {
+    return new Promise<String>((resolve, reject) => {
+      this.logger.debug('verify() will decrypt');
+      const decrypted = this.decrypt(encryptedJwtToken);
 
-        return resolve();
-      });
-    });
+      this.logger.debug('verify() decrypted. Now verify.');
+      jwt.verify(
+        decrypted,
+        this.apiSecretKey,
+        (error: jwt.VerifyErrors, decoded) => {
+          if (error) {
+            this.logger.warn('verify()', error);
+            return reject(error);
+          }
+
+          this.logger.debug('verify() success', decoded);
+          return resolve(decoded);
+        }
+      );
+    })
   }
 
   private encrypt (payload: string) {

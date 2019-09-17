@@ -2,25 +2,25 @@ import { NextFunction, Request, Response } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 import * as _ from 'lodash';
 
-import {AccessToken,User} from 'src/models';
-import {accessTokenRepository,userRepository} from 'src/repositories';
+import { User } from 'src/models';
+import { accessTokenRepository, userRepository } from 'src/repositories';
 import { jwtService } from 'src/services';
 import { getLogger } from '../logger';
-import {AccessTokenScopes} from "src/enums";
 
 const logger = getLogger('authMiddleware');
 
 function getTokenFromHeader (req: Request) {
   if (
-    req.headers.authorization &&
-    req.headers.authorization.split(' ')[0] === 'Bearer'
+    req.headers.authorization
+    && req.headers.authorization.split(' ')[0] === 'Bearer'
   ) {
     return req.headers.authorization.split(' ')[1];
   }
+  return null;
 }
 
 export const authMiddleware = async (
-  req: Request, res: Response, next: NextFunction
+  req: Request, res: Response, next: NextFunction,
 ) => {
   logger.debug('get bearer token');
   const encryptedJwt = getTokenFromHeader(req);
@@ -49,15 +49,16 @@ export const authMiddleware = async (
   }
 
   logger.debug('looking for user by email');
-  let user: User | null;
-  user = await userRepository.findUserByEmail(_.get(decryptedJwt, 'user.email'));
+  const user: User | null = await
+  userRepository.findUserByEmail(_.get(decryptedJwt, 'user.email'));
+
   if (!user) {
     const err = new Error('User not found');
     err['code'] = HttpStatusCodes.NOT_FOUND;
     return next(err);
   }
 
-  req['user'] = user as User;
+  req.user = user as User;
   req['jwtToken'] = encryptedJwt;
-  next()
+  return next();
 };

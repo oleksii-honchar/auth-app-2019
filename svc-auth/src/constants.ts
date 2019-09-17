@@ -1,23 +1,6 @@
 import * as path from 'path';
 
-/*
-  when in prod:
-    ./dist/bundle.js - svc bundle path
-    ../dist/assets - assets served from
-  when local:
-    ./src/index.ts
-    ./assets - assets served from
- */
-
-let staticAssetsPath = '';
-if (process.env.NODE_ENV === 'production') {
-  staticAssetsPath = path.join(__dirname, 'assets');
-} else {
-  staticAssetsPath = path.join(__dirname, 'assets');
-}
-
-export const STATIC_ASSETS_PATH = staticAssetsPath;
-
+export const STATIC_ASSETS_PATH = path.join(__dirname, 'assets');
 
 /**
  * @see https://github.com/Automattic/mongoose/blob/master/lib/connectionstate.js

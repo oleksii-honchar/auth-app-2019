@@ -13,5 +13,5 @@ apiRouter.use([
   registerRouter,
   loginRouter,
   logoutRouter,
-  usersRouter
+  usersRouter,
 ]);

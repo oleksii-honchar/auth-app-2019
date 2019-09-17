@@ -20,7 +20,7 @@ class UserSeeds {
         lastName: 'Weber',
         isEmailVerified: true,
         passwordHash: '',
-        role: UserRoles.admin
+        role: UserRoles.admin,
       },
       {
         _id: ObjectId('000000000002'),
@@ -29,16 +29,16 @@ class UserSeeds {
         lastName: 'Stanton',
         isEmailVerified: true,
         passwordHash: '',
-        role: UserRoles.admin
-      }
+        role: UserRoles.admin,
+      },
     ];
   }
 
   public async getData (): Promise<object[]> {
-    const passwordHash = await passwordService.generateHash(this.commonPassword)
+    const passwordHash = await passwordService.generateHash(this.commonPassword);
 
     this.usersData = this.usersData.map((userData) => {
-      userData['passwordHash'] = passwordHash;
+      userData.passwordHash = passwordHash;
       return userData;
     });
 

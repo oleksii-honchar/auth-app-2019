@@ -11,13 +11,14 @@ export const docsRouter = Router();
 const logger = getLogger('/docs');
 
 docsRouter.all('/swagger.json', (req, res, next) => {
-  const filePath = path.join(STATIC_ASSETS_PATH, 'swagger.json');
+
+  const filePath = path.join(STATIC_ASSETS_PATH, '../swagger.json');
   logger.debug(`docs json: ${filePath}`);
 
   if (fs.existsSync(filePath)) {
-    logger.debug(`file exists`);
+    logger.debug('file exists');
   } else {
-    logger.warn(`file DOESN\'T exists`);
+    logger.warn('file DOESN\'T exists');
   }
 
   res.statusCode = HttpStatusCodes.OK;

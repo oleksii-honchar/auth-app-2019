@@ -20,7 +20,7 @@ module.exports = {
       'always',
     ],
     'class-methods-use-this': 'off',
-    'dot-notation': ['error', { 'allowPattern': '^(code)$' }],
+    'dot-notation': 'off',
     'function-paren-newline': [
       'error',
       'consistent',

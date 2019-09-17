@@ -4,4 +4,4 @@ import { currentUserRouter } from './current';
 
 export const usersRouter = Router();
 
-usersRouter.use('/users', [ currentUserRouter ]);
+usersRouter.use('/users', [currentUserRouter]);

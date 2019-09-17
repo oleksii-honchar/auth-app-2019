@@ -3,7 +3,6 @@ import * as tooBusy from 'toobusy-js';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
-import * as passport from 'passport';
 
 import { router } from './routes';
 import { getLogger } from './libs/logger';
@@ -12,6 +11,7 @@ import { errorResponder, finalResponder } from './libs/responders';
 import { noCacheMiddleware, tooBusyMiddleware, requestLoggerMiddleware } from './libs/middlewares';
 
 import * as pkg from '../package.json';
+import { STATIC_ASSETS_PATH } from './constants';
 
 process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'error';
 
@@ -26,6 +26,7 @@ logger.info(`[LOG_LEVEL = ${process.env.LOG_LEVEL}]`);
 logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
 logger.info(`[MONGO_PORT = ${process.env.MONGO_PORT}]`);
 logger.info(`[NODE_ENV = ${process.env.NODE_ENV}]`);
+logger.info(`[STATIC_ASSETS_PATH = ${ STATIC_ASSETS_PATH }]`);
 logger.info(`[SVC_PORT = ${port}]`);
 logger.info(`[SVC_MOUNT_POINT = ${process.env.SVC_MOUNT_POINT}]`);
 logger.info(`[WA_BASE_URL = ${process.env.WA_BASE_URL}]`);
@@ -43,7 +44,6 @@ app.use(cookieParser());
 app.use(requestLoggerMiddleware);
 app.use(bodyParser.json({ limit: '25mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(passport.initialize());
 app.use(noCacheMiddleware);
 
 app.use(router);

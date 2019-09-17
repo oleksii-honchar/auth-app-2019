@@ -1,5 +1,5 @@
-import { User } from 'src/models';
-import { AccessToken } from 'src/models';
+import { User, AccessToken } from 'src/models';
+
 import { jwtService } from 'src/services';
 import { AccessTokenScopes } from 'src/enums/AccessTokenScopes';
 import { getLogger } from 'src/libs/logger';

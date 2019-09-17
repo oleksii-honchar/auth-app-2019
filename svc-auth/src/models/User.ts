@@ -1,5 +1,5 @@
 import { Schema, Document, model } from 'mongoose';
-import {UserRoles} from "src/enums";
+import { UserRoles } from 'src/enums';
 
 export interface User extends Document {
   createdAt: Date;
@@ -43,8 +43,8 @@ const UserSchema = new Schema<User>(
     role: {
       type: String,
       required: true,
-      default: UserRoles.user
-    }
+      default: UserRoles.user,
+    },
   },
   {
     toJSON: {

@@ -38,7 +38,7 @@ class JwtService {
           this.logger.debug('generate():encrypt..');
           const encryptedToken = this.encrypt(token);
           this.logger.debug('generate():encrypted');
-          resolve(encryptedToken);
+          return resolve(encryptedToken);
         },
       );
     });
@@ -61,9 +61,9 @@ class JwtService {
 
           this.logger.debug('verify() success', decoded);
           return resolve(decoded as string);
-        }
+        },
       );
-    })
+    });
   }
 
   private encrypt (payload: string) {

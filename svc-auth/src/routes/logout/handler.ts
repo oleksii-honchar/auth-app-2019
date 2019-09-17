@@ -4,17 +4,17 @@ import * as HttpStatusCodes from 'http-status-codes';
 import { AccessTokenScopes } from 'src/enums';
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
-import { accessTokenRepository } from "src/repositories";
+import { accessTokenRepository } from 'src/repositories';
 
 async function processLogout (req: Request) {
   const logger = getLogger('api/login:post.processLogin()');
 
   logger.debug('delete access-token by jwt');
-  await accessTokenRepository.deleteByJwt(req['jwtToken']);
+  await accessTokenRepository.deleteByJwt(req.jwtToken);
 }
 
 async function post (req: Request, res: Response, next: NextFunction) {
-  let token: string = '';
+  const token: string = '';
   try {
     await processLogout(req);
   } catch (e) {
@@ -23,7 +23,7 @@ async function post (req: Request, res: Response, next: NextFunction) {
   }
 
   res.body = {
-    message: 'Successfully logged out'
+    message: 'Successfully logged out',
   };
   res.statusCode = HttpStatusCodes.OK;
   return next();

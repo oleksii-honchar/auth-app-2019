@@ -1,24 +1,22 @@
 import { NextFunction, Request, Response } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import {
-  RegisterParamsFromReq,
-  RegisterParamsInterface,
-} from 'src/routes/register/RegisterParamsFromReq';
 import { userRepository } from 'src/repositories';
 import { User } from 'src/models';
 import { getLogger } from 'src/libs/logger';
+import {
+  RegisterParamsFromReq,
+  RegisterParamsInterface,
+} from './RegisterParamsFromReq';
+
+const logger = getLogger('api/register:post');
 
 async function processRegistration (req: Request) {
-  let user: User | null;
-  let params: RegisterParamsInterface;
-
-  const logger = getLogger('api/register:post');
-
   logger.debug('validating params...');
-  params = await new RegisterParamsFromReq(req).validate();
+  const params: RegisterParamsInterface = await
+  new RegisterParamsFromReq(req).validate();
 
-  user = await userRepository.findUserByEmail(params.email);
+  const user: User | null = await userRepository.findUserByEmail(params.email);
   if (user) throw new Error('Already exists');
 
   logger.debug('creating new one...');

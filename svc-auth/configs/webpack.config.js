@@ -9,7 +9,7 @@ const pkg = require('../package.json');
 
 const moduleCfg = require('./webpack/module.config');
 const baseCfg = require('./webpack/base.config');
-const prodCfg = require('./webpack/prod.config');
+const prodConfig = require('./webpack/prod.config');
 
 console.log(`[config:webpack] "${pkg.name}" config composition started`);
 
@@ -19,30 +19,38 @@ module.exports = (env) => {
 
   console.log(`[config:webpack] "${process.env.NODE_ENV}" mode used...`);
 
-  let cfg = baseCfg(env);
+  let config = baseCfg(env);
 
-  cfg = webpackMerge(cfg, moduleCfg);
+  config = webpackMerge(config, moduleCfg);
 
   if (env.BUILD_ANALYZE === 'true') {
     console.log('[config:webpack] bundle analyzer included');
 
-    cfg = webpackMerge(cfg, {
+    config = webpackMerge(config, {
       plugins: [ new BundleAnalyzerPlugin() ]
     });
   }
 
   if (process.env.NODE_ENV !== 'production') {
-    cfg = webpackMerge(cfg, {
+    config = webpackMerge(config, {
       devtool: 'inline-source-map',
     });
 
     console.log('[config:webpack] config composition completed');
 
-    return cfg;
+    return config;
   }
 
-  cfg = webpackMerge(cfg, prodCfg);
+  const mainConfig = webpackMerge(config, prodConfig);
+  const configWithMaps = webpackMerge(config, {
+    output: {
+      filename: '[name]-with-map.js'
+    },
+    devtool: 'inline-source-map'
+  });
+  config = [ mainConfig, configWithMaps ];
 
+  console.log('[config:webpack] clean prod & prod+maps configs prepared ');
   console.log('[config:webpack] config composition completed');
-  return cfg;
+  return config;
 }

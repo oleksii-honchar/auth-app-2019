@@ -15,6 +15,9 @@ module.exports = (env) => ({
   entry: {
     bundle: './src/index.ts',
   },
+  stats: {
+    warnings: false
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.html', '.ts', '.tsx'],
     modules: [

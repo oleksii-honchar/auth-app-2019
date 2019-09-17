@@ -3,7 +3,7 @@ import * as path from 'path';
 /*
   when in prod:
     ./dist/bundle.js - svc bundle path
-    ../dist/static/assets - assets served from
+    ../dist/assets - assets served from
   when local:
     ./src/index.ts
     ./assets - assets served from
@@ -11,7 +11,7 @@ import * as path from 'path';
 
 let staticAssetsPath = '';
 if (process.env.NODE_ENV === 'production') {
-  staticAssetsPath = path.join(__dirname, '../', 'static/assets');
+  staticAssetsPath = path.join(__dirname, 'assets');
 } else {
   staticAssetsPath = path.join(__dirname, 'assets');
 }

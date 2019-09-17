@@ -35,7 +35,7 @@
     "/api/register": {
       "post": {
         "tags": [
-          "register"
+          "auth"
         ],
         "summary": "Register new user",
         "description": "New user created and activation email send",
@@ -111,7 +111,7 @@
     "/api/login": {
       "post": {
         "tags": [
-          "login"
+          "auth"
         ],
         "summary": "Login existing user",
         "description": "Access token created and provided with response",
@@ -155,6 +155,46 @@
             "examples": {
               "message": "Successfully logged in",
               "token": "0c18182e0b6e7739fdea1abbc11aaba51c94f2d807bcf4c3ef06a8e8d9faa580924c9cac3afa60773fbe3ebb1b29905d071d6ce9fb10a6222c4e09d9800dd0c7801c404202b1d843d29fcd7c9cccb90e2fa45b8639f1664a9557d270ffeb6085b82da89af866792ebed90ee0c86becd1ae335af475fa1225f78dd01b077e3ce89a244c0bf3ca98c995931315ba66fca242f5d513b298d428bc2a430d0eb2d838e1d972534d032ccfbb809eac90551eb3bb460"
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "string",
+              "example": "Unauthorized"
+            }
+          },
+          "422": {
+            "description": "Unprocessible entity",
+            "schema": {
+              "type": "string",
+              "example": "Unprocessible entity"
+            }
+          }
+        }
+      }
+    },
+    "/api/logout": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Logout by bearer token",
+        "description": "Logout current user by bearer token",
+        "operationId": "logout",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "responses": {
+          "201": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/SuccessMessage"
             }
           },
           "403": {
@@ -226,6 +266,14 @@
     }
   },
   "definitions": {
+    "SuccessMessage": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
     "User": {
       "type": "object",
       "properties": {

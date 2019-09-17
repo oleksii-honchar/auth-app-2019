@@ -25,6 +25,14 @@ class AccessTokenRepository {
       jwt: await jwtService.generate(user),
     });
   }
+
+  public deleteByJwt (jwt: string) {
+    return AccessToken.deleteOne({ jwt });
+  }
+
+  public findByJwt (jwt: string) {
+    return AccessToken.findOne({ jwt });
+  }
 }
 
 export const accessTokenRepository = new AccessTokenRepository(

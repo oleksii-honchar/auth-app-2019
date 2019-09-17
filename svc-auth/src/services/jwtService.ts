@@ -60,7 +60,7 @@ class JwtService {
           }
 
           this.logger.debug('verify() success', decoded);
-          return resolve(decoded);
+          return resolve(decoded as string);
         }
       );
     })

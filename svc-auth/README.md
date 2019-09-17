@@ -2,16 +2,16 @@
 
 <!-- toc -->
 
-- [svc-auth](#svc-auth)
 - [Getting started](#getting-started)
-	* [Setup dependencies](#setup-dependencies)
-	* [Development dependencies](#development-dependencies)
-	    + [Docker](#docker)
-	* [Localhost domains](#localhost-domains)
+    * [Setup dependencies](#setup-dependencies)
+    * [Development dependencies](#development-dependencies)
+        + [Docker](#docker)
+    * [Localhost domains](#localhost-domains)
 - [Launch](#launch)
 - [Development](#development)
-	* [Scripts](#scripts)
-	* [Watch & build](#watch--build)
+    * [Scripts](#scripts)
+    * [Watch & build](#watch--build)
+    * [CI/CD](#cicd)
     
 <!-- tocstop -->
 

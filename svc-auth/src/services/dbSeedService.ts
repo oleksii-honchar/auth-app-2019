@@ -11,7 +11,7 @@ class DbSeedService {
     const userData: object[] = await userSeeds.getData();
     try {
       await Promise.all(userData.map((userSeed) => User.collection.updateOne(
-        { _id: userSeed._id },
+        { _id: userSeed['_id'] },
         { $set: userSeed },
         { upsert: true },
       )));

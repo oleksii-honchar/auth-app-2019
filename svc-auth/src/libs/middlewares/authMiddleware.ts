@@ -58,7 +58,7 @@ export const authMiddleware = async (
     return next(err);
   }
 
-  req.user = user as User;
+  req['user'] = user as User;
   req['jwtToken'] = encryptedJwt;
   return next();
 };

@@ -20,13 +20,15 @@ const port = process.env.SVC_PORT || 4000;
 
 logger.info(`[ACCESS_TOKEN_TTL_SECONDS = ${process.env.ACCESS_TOKEN_TTL_SECONDS}]`);
 logger.info(`[API_SECRET_KEY = ${process.env.API_SECRET_KEY}]`);
+logger.info(`[API_RATE_LIMIT_WINDOW_MINUTES = ${process.env.API_RATE_LIMIT_WINDOW_MINUTES}]`);
+logger.info(`[API_RATE_LIMIT_MAX_REQUESTS = ${process.env.API_RATE_LIMIT_MAX_REQUESTS}]`);
 logger.info(`[ENV_NAME = ${process.env.ENV_NAME}]`);
 logger.info(`[JWT_TTL_SECONDS = ${process.env.JWT_TTL_SECONDS}]`);
 logger.info(`[LOG_LEVEL = ${process.env.LOG_LEVEL}]`);
 logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
 logger.info(`[MONGO_PORT = ${process.env.MONGO_PORT}]`);
 logger.info(`[NODE_ENV = ${process.env.NODE_ENV}]`);
-logger.info(`[STATIC_ASSETS_PATH = ${ STATIC_ASSETS_PATH }]`);
+logger.info(`[STATIC_ASSETS_PATH = ${STATIC_ASSETS_PATH}]`);
 logger.info(`[SVC_PORT = ${port}]`);
 logger.info(`[SVC_MOUNT_POINT = ${process.env.SVC_MOUNT_POINT}]`);
 logger.info(`[WA_BASE_URL = ${process.env.WA_BASE_URL}]`);
@@ -38,6 +40,7 @@ const app = express();
 app.set('port', port);
 app.set('x-powered-by', false);
 app.set('query parser', 'extended');
+app.set('trust proxy', 1); // https://expressjs.com/en/guide/behind-proxies.html
 
 app.use(tooBusyMiddleware);
 app.use(cookieParser());

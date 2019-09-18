@@ -11,7 +11,6 @@ export const docsRouter = Router();
 const logger = getLogger('/docs');
 
 docsRouter.all('/swagger.json', (req, res, next) => {
-
   const filePath = path.join(STATIC_ASSETS_PATH, '../swagger.json');
   logger.debug(`docs json: ${filePath}`);
 

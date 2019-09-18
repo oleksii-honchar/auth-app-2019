@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import { rateLimitMiddleware } from 'src/libs/middlewares';
 import { versionRouter } from './version';
 import { registerRouter } from './register';
 import { loginRouter } from './login';
@@ -8,7 +9,7 @@ import { usersRouter } from './users';
 
 export const apiRouter = Router();
 
-apiRouter.use([
+apiRouter.use(rateLimitMiddleware, [
   versionRouter,
   registerRouter,
   loginRouter,

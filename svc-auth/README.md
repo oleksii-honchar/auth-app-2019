@@ -9,9 +9,10 @@
     * [Localhost domains](#localhost-domains)
 - [Launch](#launch)
 - [Development](#development)
-    * [Scripts](#scripts)
     * [Watch & build](#watch--build)
     * [CI/CD](#cicd)
+    * [In depth](#in-depth)
+        + [Scripts](#scripts)
     
 <!-- tocstop -->
 
@@ -84,12 +85,14 @@ DOCKER_REGISTRY_USER=i-am
 DOCKER_REGISTRY_PWD=my-pwd
 DOCKER_REGISTRY_HOST=docker.io
 
-API_SECRET_KEY=any
-JWT_TTL_SECONDS=100
-ACCESS_TOKEN_TTL_SECONDS=100
+ACCESS_TOKEN_TTL_SECONDS=900
+API_SECRET_KEY=12312312312312312312
+API_RATE_LIMIT_WINDOW_MINUTES=10
+API_RATE_LIMIT_MAX_REQUESTS=10
+JWT_TTL_SECONDS=900
 ```
 
-In order to push images you need to use real docker.io credentials.
+**FYI** In order to push images you need to use real docker.io credentials.
 
 It's time to install dependencies and start app:
 
@@ -101,14 +104,42 @@ yarn docker:up:prod:loc
 
 Default urls: 
 
-- `http://svc-auth-loc.dev.me:9000/api/version`
-- `http://svc-auth-loc.dev.me:9000/docs`
-- `http://svc-auth-loc.dev.me:9000/swagger-editor`
+- [http://svc-auth-loc.dev.me:9000/api/version](http://svc-auth-loc.dev.me:9000/api/version)
+- [http://svc-auth-loc.dev.me:9000/docs](`http://svc-auth-loc.dev.me:9000/docs`)
+- [http://svc-auth-loc.dev.me:9000/swagger-editor](`http://svc-auth-loc.dev.me:9000/swagger-editor`)
 
 # Development
 
-## Scripts
 
+
+## Watch & build
+
+To run your code via docker with watch & debug option you can use script:
+
+```bash
+yarn start
+```
+
+It will up mongo & service container and start nodemon inside. You need to have docker build before or it will be downloaded (@latest). In general you do't need to rebuild your docker. It uses your local source files.
+
+## CI/CD
+
+There is 5 basic environment expected: 
+
+- LOCAL - source-maps, debugger, and docs available
+- DEVELOPMENT - source-maps, debugger, and docs available
+- QA - source-maps, debugger, and docs available
+- STAGE - **NO** `/docs` & `/swagger-editor` routes starting from this env.
+- PRODUCTION - error log level
+
+Environment variable `ENV_NAME` used to specify for executeds apps in which env it runs.
+
+Check `./configs/envs` for details.
+
+## In depth
+
+
+### Scripts
 There is a set of scripts defined in package.json to help with day-to-day jobs:
 
 - `start`: launch nodemon watch with ts & debug mode
@@ -127,25 +158,3 @@ There is a set of scripts defined in package.json to help with day-to-day jobs:
 - `lint` & `lint:fix`: eslint & fix
 - `test:*`: all test stuff
 - `types:*`: type checking stuff
-
-## Watch & build
-
-To run your code via docker with watch & debug option you can use script:
-
-```bash
-yarn start
-```
-
-It will up mongo & service container and start nodemon inside. You need to have docker build before or it will be downloaded (@latest).
-
-## CI/CD
-
-There is 5 basic environment expected: 
-
-- LOCAL
-- DEVELOPMENT
-- QA
-- STAGE - no `/docs` & `/swagger-editor` routes starting from this env.
-- PRODUCTION
-
-Environment variable `ENV_NAME` used to specify for executeds apps in which env it runs.

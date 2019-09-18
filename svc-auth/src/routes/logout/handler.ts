@@ -10,7 +10,7 @@ async function processLogout (req: Request) {
   const logger = getLogger('api/login:post.processLogin()');
 
   logger.debug('delete access-token by jwt');
-  await accessTokenRepository.deleteByJwt(req.jwtToken);
+  await accessTokenRepository.deleteByJwt(req['jwtToken']);
 }
 
 async function post (req: Request, res: Response, next: NextFunction) {

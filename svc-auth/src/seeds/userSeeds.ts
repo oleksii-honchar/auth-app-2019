@@ -38,7 +38,7 @@ class UserSeeds {
     const passwordHash = await passwordService.generateHash(this.commonPassword);
 
     this.usersData = this.usersData.map((userData) => {
-      userData.passwordHash = passwordHash;
+      userData['passwordHash'] = passwordHash;
       return userData;
     });
 

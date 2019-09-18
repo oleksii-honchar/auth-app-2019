@@ -150,6 +150,7 @@ There is a set of scripts defined in package.json to help with day-to-day jobs:
 - `cm`: cli commitizen commit
 - `check:all`: check ts types & eslint
 - `docker:build`: build docker images
+- `docker:push`: push current & latest images to docker registry
 - `docker:up:loc`: ups docker compose in loc mode 
 - `docker:up:prod:loc` : ups docker compose in prod:loc mode
 - `launch` -> `launch:prod`: prod launch

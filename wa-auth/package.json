@@ -1,0 +1,77 @@
+{
+  "name": "wa-auth",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "yarn docker:up:loc",
+    "cm": "npx git-cz",
+    "check:all": "run-p lint types:check",
+    "prebuild": "yarn clean:dist",
+    "build": "bash scripts/build.sh",
+    "build:loc": "bash scripts/build.loc.sh",
+    "e2e": "ng e2e",
+    "clean:dist": "rm -rf ./dist",
+    "launch:loc": "ng serve",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "ng": "ng",
+    "ng:build": "ng build",
+    "test": "ng test",
+    "test:coverage": "ng test --coverage"
+  },
+  "private": false,
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn check:all",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --config=./configs/commitlint.config.js"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "svc-auth/node_modules/cz-conventional-changelog"
+    }
+  },
+  "author": "Oleksii Honchar",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "8.2.6",
+    "@angular/common": "8.2.6",
+    "@angular/compiler": "8.2.6",
+    "@angular/core": "8.2.6",
+    "@angular/forms": "8.2.6",
+    "@angular/platform-browser": "8.2.6",
+    "@angular/platform-browser-dynamic": "8.2.6",
+    "@angular/router": "8.2.6",
+    "npm-run-all": "^4.1.5",
+    "rxjs": "6.5.3",
+    "tslib": "1.10.0",
+    "zone.js": "0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "0.803.4",
+    "@angular/cli": "8.3.4",
+    "@angular/compiler-cli": "8.2.6",
+    "@angular/language-service": "8.2.6",
+    "@commitlint/cli": "8.1.0",
+    "@commitlint/config-conventional": "8.1.0",
+    "@types/jasmine": "3.4.0",
+    "@types/jasminewd2": "2.0.6",
+    "@types/node": "12.7.5",
+    "codelyzer": "5.1.0",
+    "commitizen": "^4.0.3",
+    "cross-env": "^6.0.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.0.5",
+    "jasmine-core": "3.4.0",
+    "jasmine-spec-reporter": "4.2.1",
+    "jest": "^24.9.0",
+    "karma": "4.3.0",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-coverage-istanbul-reporter": "2.1.0",
+    "karma-jasmine": "2.0.1",
+    "karma-jasmine-html-reporter": "1.4.2",
+    "protractor": "5.4.2",
+    "ts-node": "8.4.1",
+    "tslint": "5.20.0",
+    "typescript": "3.5.3"
+  }
+}

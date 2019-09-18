@@ -23,7 +23,7 @@ printf "Bumping version...\n";
 export VERSION=$(./devops/ci/scripts/semver.sh bump $BUMP $VERSION)
 
 jq '.version=env.VERSION' ./package.json > /tmp/tmp.$$.json && mv /tmp/tmp.$$.json ./package.json
-jq '.info.version=env.VERSION' ./swagger.json > /tmp/tmp.$$.json && mv /tmp/tmp.$$.json ./swagger.json
+jq '.info.version=env.VERSION' ./src/swagger.json > /tmp/tmp.$$.json && mv /tmp/tmp.$$.json ./src/swagger.json
 
 git add .
 git commit -m "$VERSION" --no-verify

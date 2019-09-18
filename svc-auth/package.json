@@ -12,7 +12,7 @@
     "build:loc:analyze": "cross-env-shell BUILD_ANALYZE=true bash ./scripts/build.loc.sh",
     "cm": "npx git-cz",
     "check:all": "run-p lint types:check",
-    "clean:dist": "rm -rf dist/static",
+    "clean:dist": "rm -rf dist",
     "docker:build": "bash devops/scripts/build-docker.sh",
     "docker:push": "bash scripts/docker-push.sh",
     "docker:up:loc": "bash ./devops/ci/scripts/up.loc.sh",

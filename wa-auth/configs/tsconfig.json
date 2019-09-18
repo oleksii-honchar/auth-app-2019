@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "allowJs": false, // Allow JavaScript files to be compiled.
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export. This does not affect code emit, just typechecking.
+    "baseUrl": "..",
+    "declaration": true, // Generates corresponding '.d.ts' file
+    "diagnostics": false, // Show diagnostic information
+    "emitDecoratorMetadata": true, // Enables experimental support for emitting type metadata for decorators.
+    "experimentalDecorators": true, // Enables experimental support for ES7 decorators
+    "resolveJsonModule": true, // Include modules imported with .json extension.
+    "incremental": true,
+    "importHelpers": true, // Import emit helpers from 'tslib'
+    "isolatedModules": false, // Transpile each file as a separate module (similar to 'ts.transpileModule')
+    "lib": [
+      "dom",
+      "esnext" // This allows you to use the latest JavaScript language features
+    ],
+    "module": "commonjs",
+    "newLine": "lf",
+    "noEmit": true, // Do not emit outputs
+    "noLib": false, // Do not include the default library file (lib.d.ts).
+    "noStrictGenericChecks": true, // Disable strict checking of generic signatures in function types.
+    "paths": {
+      "src/*": [ "src/*" ]
+    },
+    "removeComments": true, // Do not emit comments to output
+    "skipLibCheck": false, // Skip type checking of all declaration files (*.d.ts).
+    "sourceMap": true,
+    "strict": true, // Enable all strict type-checking options
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "esnext",
+    "typeRoots": [ // relative to package.json path
+      "../node_modules/@types",
+      "../src/typings"
+    ]
+  },
+  "include": [ // relative to ./configs/tsconfig.json
+    "../src/**/*"
+  ],
+  "exclude": [ // relative to ./configs/tsconfig.json
+    "../node_modules",
+    "../dist",
+    "../docs",
+    "../coverage",
+    "../devops"
+  ]
+}

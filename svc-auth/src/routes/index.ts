@@ -1,9 +1,9 @@
 import {
   Router, Request, Response, NextFunction,
 } from 'express';
-import url from 'url';
-import path from 'path';
-import HttpStatusCodes from 'http-status-codes';
+import * as url from 'url';
+import * as path from 'path';
+import * as HttpStatusCodes from 'http-status-codes';
 
 import { is } from 'src/libs/is';
 import { apiRouter } from './api';

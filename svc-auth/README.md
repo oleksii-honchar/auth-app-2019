@@ -105,8 +105,8 @@ yarn docker:up:prod:loc
 Default urls: 
 
 - [http://svc-auth-loc.dev.me:9000/api/version](http://svc-auth-loc.dev.me:9000/api/version)
-- [http://svc-auth-loc.dev.me:9000/docs](`http://svc-auth-loc.dev.me:9000/docs`)
-- [http://svc-auth-loc.dev.me:9000/swagger-editor](`http://svc-auth-loc.dev.me:9000/swagger-editor`)
+- [http://svc-auth-loc.dev.me:9000/docs](http://svc-auth-loc.dev.me:9000/docs)
+- [http://svc-auth-loc.dev.me:9000/swagger-editor](http://svc-auth-loc.dev.me:9000/swagger-editor)
 
 # Development
 
@@ -158,3 +158,9 @@ There is a set of scripts defined in package.json to help with day-to-day jobs:
 - `lint` & `lint:fix`: eslint & fix
 - `test:*`: all test stuff
 - `types:*`: type checking stuff
+
+
+The main difference between `launch:*` & `docker:up:*` scripts are:
+
+- `launch:*` are used to launch node.js app either using nodemon or node.js itself. These scripts can be used locally but mostly used by docker container. You should avoid using them for development.
+- `docker:up*` are used for local development only. It will up docerk-compose services in differnet modes to get you closer to prod env. It is recommended to use `yarn start` for local development and `docker:up:prod:loc` for final test before merge.

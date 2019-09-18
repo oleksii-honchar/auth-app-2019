@@ -7,9 +7,11 @@ services:
     env_file:
       - ../envs/production.loc.env
     environment:
-      - API_SECRET_KEY
-      - JWT_TTL_SECONDS
       - ACCESS_TOKEN_TTL_SECONDS
+      - API_SECRET_KEY
+      - API_RATE_LIMIT_WINDOW_MINUTES
+      - API_RATE_LIMIT_MAX_REQUESTS
+      - JWT_TTL_SECONDS
 #    volumes:
 #      - ../../:/usr/src/svc
     ports:

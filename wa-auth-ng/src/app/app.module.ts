@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { CoreModule } from './core';
-import { MaterialModule } from './shared';
+import { SharedModule } from './shared';
 
 import {
   LoginModule,
@@ -21,7 +21,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    SharedModule,
     CoreModule,
     AppRoutingModule,
     LoginModule,

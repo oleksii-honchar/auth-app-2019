@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -10,15 +9,12 @@ import {
   MatInputModule,
   MatIconModule,
   MatTooltipModule,
-  MatDialogModule
+  MatDialogModule,
+  MatToolbarModule
 } from '@angular/material';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-
 
 @NgModule({
   imports: [
-    CommonModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,

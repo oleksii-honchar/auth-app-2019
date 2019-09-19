@@ -24,6 +24,11 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'sign-in',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
 
 import { CoreModule } from './core';
+import { MaterialModule } from './shared';
+
 import {
   LoginModule,
   RegisterModule,
@@ -19,11 +21,12 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MaterialModule,
     CoreModule,
     AppRoutingModule,
     LoginModule,
     RegisterModule,
-    DashboardModule
+    DashboardModule,
   ],
   providers: [],
   bootstrap: [ AppComponent ]

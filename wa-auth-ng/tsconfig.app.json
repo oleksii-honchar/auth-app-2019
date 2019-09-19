@@ -12,7 +12,8 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "src/test.ts",
+    "src/setupJest.ts",
+    "src/jestGlobalMocks.ts",
     "src/**/*.spec.ts"
   ]
 }

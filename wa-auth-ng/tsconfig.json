@@ -1,23 +1,31 @@
 {
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
+  "compileOnSave": false,
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "..",
+    "baseUrl": "./",
     "declaration": true,
     "diagnostics": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "outDir": "./dist/out-tsc",
     "resolveJsonModule": true,
     "incremental": true,
     "importHelpers": true,
     "isolatedModules": false,
     "lib": [
-      "dom",
-      "esnext"
+      "esnext",
+      "dom"
     ],
-    "module": "commonjs",
+    "module": "esnext",
+    "moduleResolution": "node",
     "newLine": "lf",
-    "noEmit": true,
+    "noEmit": false,
     "noLib": false,
     "noStrictGenericChecks": true,
     "paths": {
@@ -25,23 +33,13 @@
     },
     "removeComments": true,
     "skipLibCheck": false,
-    "sourceMap": true,
     "strict": true,
+    "sourceMap": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "esnext",
+    "target": "es2015",
     "typeRoots": [
-      "../node_modules/@types",
-      "../src/typings"
+      "node_modules/@types",
+      "src/typings"
     ]
-  },
-  "include": [ // relative to ./configs/tsconfig.json
-    "../src/**/*"
-  ],
-  "exclude": [ // relative to ./configs/tsconfig.json
-    "../node_modules",
-    "../dist",
-    "../docs",
-    "../coverage",
-    "../devops"
-  ]
+  }
 }

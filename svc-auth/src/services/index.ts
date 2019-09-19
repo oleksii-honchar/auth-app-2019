@@ -1,3 +1,4 @@
-export { dbService } from './dbService';
-export { dbSeedService } from './dbSeedService';
-export * from './userService';
+export * from './dbService';
+export * from './dbSeedService';
+export * from './passwordService';
+export * from './jwtService';

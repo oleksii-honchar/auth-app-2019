@@ -1,3 +1,4 @@
-declare interface Error {
-   code?: number;
- }
+declare module '*.json' {
+  const value: any;
+  export default value;
+}

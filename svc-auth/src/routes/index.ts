@@ -1,7 +1,9 @@
-import { Router, Request, Response, NextFunction } from 'express';
-import url from 'url';
-import path from 'path';
-import HttpStatusCodes from 'http-status-codes';
+import {
+  Router, Request, Response, NextFunction,
+} from 'express';
+import * as url from 'url';
+import * as path from 'path';
+import * as HttpStatusCodes from 'http-status-codes';
 
 import { is } from 'src/libs/is';
 import { apiRouter } from './api';
@@ -13,6 +15,7 @@ const mountPoint = process.env.SVC_MOUNT_POINT!;
 export const router = Router();
 
 router.use(faviconRouter);
+
 router.use(mountPoint, [
   apiRouter,
   (req: Request, res: Response, next: NextFunction) => {
@@ -21,7 +24,7 @@ router.use(mountPoint, [
     }
 
     return next();
-  }
+  },
 ]);
 
 if (['stage', 'production'].indexOf(process.env.ENV_NAME!) < 0) {
@@ -31,9 +34,9 @@ if (['stage', 'production'].indexOf(process.env.ENV_NAME!) < 0) {
 
 router.use('*', (req, res, next) => {
   if (
-    req.route ||
-    res.statusCode === HttpStatusCodes.NOT_FOUND ||
-    res.statusCode === HttpStatusCodes.INTERNAL_SERVER_ERROR
+    req.route
+    || res.statusCode === HttpStatusCodes.NOT_FOUND
+    || res.statusCode === HttpStatusCodes.INTERNAL_SERVER_ERROR
   ) {
     return next();
   }

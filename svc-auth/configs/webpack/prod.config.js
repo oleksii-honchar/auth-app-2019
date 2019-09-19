@@ -15,14 +15,5 @@ module.exports = {
         parallel: true,
       }),
     ],
-  },
-  plugins: [
-    new CompressionPlugin({
-      filename: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.[tj]sx?$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0,
-    }),
-  ],
+  }
 };

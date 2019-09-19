@@ -1,8 +1,8 @@
-import http from 'http';
-import tooBusy from 'toobusy-js';
-import express from 'express';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
+import * as http from 'http';
+import * as tooBusy from 'toobusy-js';
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
 
 import { router } from './routes';
 import { getLogger } from './libs/logger';
@@ -10,31 +10,37 @@ import { dbService, dbSeedService } from './services';
 import { errorResponder, finalResponder } from './libs/responders';
 import { noCacheMiddleware, tooBusyMiddleware, requestLoggerMiddleware } from './libs/middlewares';
 
-import package$ from '../package.json';
+import * as pkg from '../package.json';
+import { STATIC_ASSETS_PATH } from './constants';
 
 process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'error';
 
 const logger = getLogger('APP-SVC', { ignoreLogLevel: true });
 const port = process.env.SVC_PORT || 4000;
 
+logger.info(`[ACCESS_TOKEN_TTL_SECONDS = ${process.env.ACCESS_TOKEN_TTL_SECONDS}]`);
+logger.info(`[API_SECRET_KEY = ${process.env.API_SECRET_KEY}]`);
+logger.info(`[API_RATE_LIMIT_WINDOW_MINUTES = ${process.env.API_RATE_LIMIT_WINDOW_MINUTES}]`);
+logger.info(`[API_RATE_LIMIT_MAX_REQUESTS = ${process.env.API_RATE_LIMIT_MAX_REQUESTS}]`);
 logger.info(`[ENV_NAME = ${process.env.ENV_NAME}]`);
+logger.info(`[JWT_TTL_SECONDS = ${process.env.JWT_TTL_SECONDS}]`);
 logger.info(`[LOG_LEVEL = ${process.env.LOG_LEVEL}]`);
+logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
+logger.info(`[MONGO_PORT = ${process.env.MONGO_PORT}]`);
 logger.info(`[NODE_ENV = ${process.env.NODE_ENV}]`);
+logger.info(`[STATIC_ASSETS_PATH = ${STATIC_ASSETS_PATH}]`);
 logger.info(`[SVC_PORT = ${port}]`);
 logger.info(`[SVC_MOUNT_POINT = ${process.env.SVC_MOUNT_POINT}]`);
-logger.info(`[MONGO_DB = ${process.env.MONGO_DB}]`);
 logger.info(`[WA_BASE_URL = ${process.env.WA_BASE_URL}]`);
-logger.info(`[API_SECRET_KEY = ${process.env.API_SECRET_KEY}]`);
-logger.info(`[JWT_TTL_SECONDS = ${process.env.JWT_TTL_SECONDS}]`);
-logger.info(`[ACCESS_TOKEN_TTL_SECONDS = ${process.env.ACCESS_TOKEN_TTL_SECONDS}]`);
 
-logger.info(`Starting app [${package$.name}] ...`);
+logger.info(`Starting app [${pkg.name}] ...`);
 
 const app = express();
 
 app.set('port', port);
 app.set('x-powered-by', false);
 app.set('query parser', 'extended');
+app.set('trust proxy', 1); // https://expressjs.com/en/guide/behind-proxies.html
 
 app.use(tooBusyMiddleware);
 app.use(cookieParser());
@@ -50,7 +56,7 @@ app.use(finalResponder.router);
 
 const server = http.createServer(app);
 
-async function start() {
+async function start () {
   await dbService.connect();
   await dbSeedService.bootstrapDb();
 

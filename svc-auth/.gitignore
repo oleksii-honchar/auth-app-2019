@@ -11,7 +11,7 @@ project.env
 backup/*
 coverage
 dist/*
-devops/version/
+devops/version
 !dist/.gitkeep
 logs/*
 node_modules/

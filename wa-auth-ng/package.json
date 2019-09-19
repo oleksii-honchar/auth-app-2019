@@ -1,0 +1,74 @@
+{
+  "name": "wa-auth",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "yarn docker:up:loc",
+    "cm": "npx git-cz",
+    "check:all": "run-p lint types:check",
+    "prebuild": "yarn clean:dist",
+    "build": "bash scripts/build.sh",
+    "build:loc": "bash scripts/build.loc.sh",
+    "e2e": "ng e2e",
+    "clean:dist": "rm -rf ./dist",
+    "launch:loc": "ng serve --disable-host-check",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "ng": "ng",
+    "ng:build": "ng build",
+    "test": "npx jest --runInBand --silent",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "cross-env NODE_ENV=test npx jest --coverage",
+    "types:check": "tsc -p tsconfig.app.json"
+  },
+  "private": false,
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn check:all",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --config=./configs/commitlint.config.js"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "svc-auth/node_modules/cz-conventional-changelog"
+    }
+  },
+  "author": "Oleksii Honchar",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/animations": "^8.2.5",
+    "@angular/cdk": "8.2.0",
+    "@angular/common": "8.2.5",
+    "@angular/compiler": "8.2.5",
+    "@angular/core": "8.2.5",
+    "@angular/forms": "8.2.5",
+    "@angular/material": "^8.2.0",
+    "@angular/platform-browser": "8.2.5",
+    "@angular/platform-browser-dynamic": "8.2.5",
+    "@angular/router": "8.2.5",
+    "npm-run-all": "4.1.5",
+    "rxjs": "6.5.3",
+    "tslib": "1.10.0",
+    "zone.js": "0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "0.803.4",
+    "@angular/cli": "8.3.4",
+    "@angular/compiler-cli": "8.2.5",
+    "@angular/language-service": "8.2.5",
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.5",
+    "codelyzer": "5.0.0",
+    "commitizen": "^4.0.3",
+    "cross-env": "6.0.0",
+    "cz-conventional-changelog": "3.0.2",
+    "husky": "3.0.5",
+    "jest": "24.9.0",
+    "jest-preset-angular": "7.1.1",
+    "protractor": "5.4.0",
+    "ts-node": "7.0.0",
+    "tslint": "5.15.0",
+    "typescript": "3.5.3"
+  }
+}

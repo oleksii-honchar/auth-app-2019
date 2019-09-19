@@ -1,5 +1,7 @@
 {
-  "watch": ["dist"],
-  "ext": "js",
-  "exec": "node --inspect=0.0.0.0:9002 dist/bundle.js"
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "TS_NODE_TRANSPILE_ONLY=true TS_NODE_FILES=true TS_NODE_PROJECT=./tsconfig.json node --inspect=0.0.0.0:9229 -r ts-node/register -r tsconfig-paths/register ./src/index.ts",
+  "delay": 2000
 }

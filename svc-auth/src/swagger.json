@@ -1,0 +1,301 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "AuthApp service",
+    "version": "2.0.1",
+    "title": "svc-auth"
+  },
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/version": {
+      "get": {
+        "tags": [
+          "version"
+        ],
+        "summary": "Get current version of service",
+        "description": "text response with app version received",
+        "operationId": "version",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string",
+              "description": "delivery-flow-service:1.0.0"
+            }
+          }
+        }
+      }
+    },
+    "/api/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Register new user",
+        "description": "New user created and activation email send",
+        "operationId": "register",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "firstName",
+            "type": "string",
+            "required": true,
+            "description": "User first name"
+          },
+          {
+            "in": "formData",
+            "name": "lastName",
+            "type": "string",
+            "required": true,
+            "description": "User last name"
+          },
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "description": "New user email"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "required": true,
+            "description": "Password"
+          },
+          {
+            "in": "formData",
+            "name": "passwordConfirmation",
+            "type": "string",
+            "required": true,
+            "description": "Password confirmation"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully created",
+            "schema": {
+              "type": "string",
+              "example": "Successfully created"
+            }
+          },
+          "422": {
+            "description": "Unprocessible entity",
+            "schema": {
+              "type": "string",
+              "example": "Already exists"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "type": "string",
+              "example": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Login existing user",
+        "description": "Access token created and provided with response",
+        "operationId": "login",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "description": "New user email"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "required": true,
+            "description": "Password"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully logged in",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "token": {
+                  "type": "string"
+                }
+              }
+            },
+            "examples": {
+              "message": "Successfully logged in",
+              "token": "0c18182e0b6e7739fdea1abbc11aaba51c94f2d807bcf4c3ef06a8e8d9faa580924c9cac3afa60773fbe3ebb1b29905d071d6ce9fb10a6222c4e09d9800dd0c7801c404202b1d843d29fcd7c9cccb90e2fa45b8639f1664a9557d270ffeb6085b82da89af866792ebed90ee0c86becd1ae335af475fa1225f78dd01b077e3ce89a244c0bf3ca98c995931315ba66fca242f5d513b298d428bc2a430d0eb2d838e1d972534d032ccfbb809eac90551eb3bb460"
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "string",
+              "example": "Unauthorized"
+            }
+          },
+          "422": {
+            "description": "Unprocessible entity",
+            "schema": {
+              "type": "string",
+              "example": "Unprocessible entity"
+            }
+          }
+        }
+      }
+    },
+    "/api/logout": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Logout by bearer token",
+        "description": "Logout current user by bearer token",
+        "operationId": "logout",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "responses": {
+          "201": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/SuccessMessage"
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "string",
+              "example": "Unauthorized"
+            }
+          },
+          "422": {
+            "description": "Unprocessible entity",
+            "schema": {
+              "type": "string",
+              "example": "Unprocessible entity"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/current": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Get current user",
+        "description": "Get current user json by auth token",
+        "operationId": "users",
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "text/plain; charset=utf-8"
+        ],
+        "responses": {
+          "201": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "string",
+              "example": "Unauthorized"
+            }
+          },
+          "422": {
+            "description": "Unprocessible entity",
+            "schema": {
+              "type": "string",
+              "example": "Unprocessible entity"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "SuccessMessage": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isEmailVerified": {
+          "type": "boolean"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

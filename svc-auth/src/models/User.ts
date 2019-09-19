@@ -1,4 +1,5 @@
 import { Schema, Document, model } from 'mongoose';
+import { UserRoles } from 'src/enums';
 
 export interface User extends Document {
   createdAt: Date;
@@ -39,13 +40,20 @@ const UserSchema = new Schema<User>(
       type: Boolean,
       default: false,
     },
+    role: {
+      type: String,
+      required: true,
+      default: UserRoles.user,
+    },
   },
   {
     toJSON: {
       transform (doc, ret) {
-        ret.id = ret._id;
-        delete ret._id;
-        delete ret.passwordHash;
+        const res = { ...ret };
+        res.id = res._id;
+        delete res._id;
+        delete res.passwordHash;
+        return res;
       },
     },
   },

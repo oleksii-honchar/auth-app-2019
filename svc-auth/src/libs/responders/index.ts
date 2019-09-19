@@ -1,2 +1,2 @@
-export * from './error';
-export * from './final';
+export * from './errorResponder';
+export * from './finalResponder';

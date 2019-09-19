@@ -6,8 +6,8 @@ import { CoreModule } from './core';
 import { SharedModule } from './shared';
 
 import {
-  LoginModule,
-  RegisterModule,
+  SignInModule,
+  SignUpModule,
   DashboardModule
 } from './modules';
 
@@ -24,8 +24,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     CoreModule,
     AppRoutingModule,
-    LoginModule,
-    RegisterModule,
+    SignInModule,
+    SignUpModule,
     DashboardModule,
   ],
   providers: [],

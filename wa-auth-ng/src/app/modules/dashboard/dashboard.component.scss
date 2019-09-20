@@ -1,0 +1,21 @@
+@import "../../../assets/stylesheets/mixins/auth.scss";
+
+:host {
+  mat-card {
+    @include authCard();
+  }
+  mat-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+      display: block;
+    }
+  }
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

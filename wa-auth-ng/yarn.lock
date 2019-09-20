@@ -6301,7 +6301,7 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-ngx-captcha@7.0.0:
+ngx-captcha@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/ngx-captcha/-/ngx-captcha-7.0.0.tgz#a7aa9f4338435f4efb8be21296685a4a4dadb944"
   integrity sha512-L9lX9ZHgMwl0brm1Vw45bxkqMOwCLAEjD+Cs7GHZW/3FVIBb/yJ7qVEgIIOOI29+95Fkaxbc585vgQCdnnwQAQ==

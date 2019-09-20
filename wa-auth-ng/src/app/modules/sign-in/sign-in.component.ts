@@ -9,18 +9,20 @@ import { ValidatorService } from '@app/shared/services';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
-  form = this.fb.group({
-    email: ['', [
-      Validators.required,
-      Validators.pattern(this.validatorService.emailPattern)
-    ]],
-    password: ['', Validators.required],
-  });
+  private form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService
-  ) { }
+  ) {
+    this.form = this.fb.group({
+      email: ['', [
+        Validators.required,
+        Validators.pattern(this.validatorService.emailPattern)
+      ]],
+      password: [ '', Validators.required ],
+    });
+  }
 
   markFormFieldsAsTouched(form: FormGroup): void {
     if (!form.valid) {

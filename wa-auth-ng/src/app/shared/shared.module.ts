@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './components';
 
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { PasswordVerifyComponent } from './components/';
 
 @NgModule({
-  declarations: [ AutofocusDirective ],
+  declarations: [ AutofocusDirective, PasswordVerifyComponent ],
   imports: [
     CommonModule,
     MaterialModule,
   ],
   exports: [
     MaterialModule,
-    AutofocusDirective
+    AutofocusDirective,
+    PasswordVerifyComponent
   ]
 })
 export class SharedModule { }

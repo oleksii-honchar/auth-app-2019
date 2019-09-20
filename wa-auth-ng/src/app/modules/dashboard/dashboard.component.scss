@@ -3,19 +3,53 @@
 :host {
   mat-card {
     @include authCard();
+    //background-color: transparent;
+    background: none;
+    width: 200px;
+    overflow: hidden;
+    z-index: 1;
+    //background-image: url('https://source.unsplash.com/featured/?texture');
+    //filter: blur(8px);
+    //-webkit-filter: blur(8px);
+    &::before {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      background-size: contain;
+      background-image: url('https://images.unsplash.com/photo-1562227321-c6710bfec9a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+      //background-image: url('https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+      //background-image: url('https://images.unsplash.com/flagged/photo-1568005242833-d0f5f61da402?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+      //background-image: url('https://images.unsplash.com/photo-1562016600-ece13e8ba570?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=978&q=80');
+    top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter: blur(8px);
+      -webkit-filter: blur(8px);
+
+      //background-image: linear-gradient(120deg,#eaee44,#33d0ff);
+      background-color: white;
+      opacity: .7;
+      // mix-blend-mode: color;
+      // mix-blend-mode: hard-light;
+      // mix-blend-mode: hue;
+    }
   }
-  mat-card-content {
+
+  //mat-card > * {
+  //  z-index: 100;
+  //}
+
+  mat-card-content, mat-card-footer, mat-card-header {
+    //background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    & > * {
-      display: block;
-    }
+    flex-flow: column wrap;
   }
 }
 
-.example-header-image {
+.header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }

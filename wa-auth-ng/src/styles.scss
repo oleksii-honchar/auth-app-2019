@@ -1,9 +1,7 @@
-@import "./assets/stylesheets/reset.scss";
 @import "~@angular/material/prebuilt-themes/indigo-pink.scss";
+
+@import "./assets/stylesheets/global.scss";
+@import "./assets/stylesheets/normalize.scss";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.spacer {
-  flex: 1 1 auto;
-}

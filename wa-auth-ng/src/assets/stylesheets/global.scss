@@ -1,0 +1,20 @@
+mat-form-field {
+  margin-bottom: .75rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.mat-icon {
+  cursor: pointer;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.divider {
+  display: inline-block;
+  width: 5px;
+}

@@ -29,7 +29,8 @@
     "noLib": false,
     "noStrictGenericChecks": true,
     "paths": {
-      "src/*": [ "src/*" ]
+      "@src/*": [ "src/*" ],
+      "@app/*": [ "src/app/*" ]
     },
     "removeComments": true,
     "skipLibCheck": false,

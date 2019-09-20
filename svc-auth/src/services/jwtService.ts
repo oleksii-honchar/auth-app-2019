@@ -2,8 +2,8 @@ import * as jwt from 'jsonwebtoken';
 import { Buffer } from 'safe-buffer';
 import { createCipheriv, Binary, createDecipheriv } from 'crypto';
 
-import { User } from 'src/models';
-import { getLogger } from 'src/libs/logger';
+import { User } from '@src/models';
+import { getLogger } from '@src/libs/logger';
 
 /**
  * Generate & verify jwt token

@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { AccessTokenScopes } from 'src/enums';
-import { User } from 'src/models';
-import { getLogger } from 'src/libs/logger';
-import { accessTokenRepository, userRepository } from 'src/repositories';
-import { passwordService } from 'src/services';
-import { NotFoundError, ValidationError } from 'src/libs/error-classes';
+import { AccessTokenScopes } from '@src/enums';
+import { User } from '@src/models';
+import { getLogger } from '@src/libs/logger';
+import { accessTokenRepository, userRepository } from '@src/repositories';
+import { passwordService } from '@src/services';
+import { NotFoundError, ValidationError } from '@src/libs/error-classes';
 import {
   LoginParamsFromReq,
   LoginParamsInterface,

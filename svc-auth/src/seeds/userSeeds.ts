@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
-import { UserRoles } from 'src/enums';
-import { passwordService } from 'src/services';
+import { UserRoles } from '@src/enums';
+import { passwordService } from '@src/services';
 
 const { ObjectId } = mongoose.Types;
 

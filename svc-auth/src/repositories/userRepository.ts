@@ -1,7 +1,7 @@
-import { User } from 'src/models';
-import { getLogger } from 'src/libs/logger';
-import { RegisterParamsInterface } from 'src/routes/register/RegisterParamsFromReq';
-import { passwordService } from 'src/services/passwordService';
+import { User } from '@src/models';
+import { getLogger } from '@src/libs/logger';
+import { RegisterParamsInterface } from '@src/routes/register/RegisterParamsFromReq';
+import { passwordService } from '@src/services/passwordService';
 
 class UserRepository {
   private logger: any;

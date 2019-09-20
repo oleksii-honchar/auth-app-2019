@@ -3,8 +3,8 @@ import * as path from 'path';
 import * as HttpStatusCodes from 'http-status-codes';
 import * as fs from 'fs';
 
-import { getLogger } from 'src/libs/logger';
-import { is } from 'src/libs/is';
+import { getLogger } from '@src/libs/logger';
+import { is } from '@src/libs/is';
 import { STATIC_ASSETS_PATH } from '../constants';
 
 export const docsRouter = Router();

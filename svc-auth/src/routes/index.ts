@@ -5,7 +5,7 @@ import * as url from 'url';
 import * as path from 'path';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { is } from 'src/libs/is';
+import { is } from '@src/libs/is';
 import { apiRouter } from './api';
 import { docsRouter } from './docs';
 import { faviconRouter } from './favicon';

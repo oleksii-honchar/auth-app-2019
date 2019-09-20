@@ -1,8 +1,8 @@
-import { User, AccessToken } from 'src/models';
+import { User, AccessToken } from '@src/models';
 
-import { jwtService } from 'src/services';
-import { AccessTokenScopes } from 'src/enums/AccessTokenScopes';
-import { getLogger } from 'src/libs/logger';
+import { jwtService } from '@src/services';
+import { AccessTokenScopes } from '@src/enums/AccessTokenScopes';
+import { getLogger } from '@src/libs/logger';
 
 class AccessTokenRepository {
   private ttl: number;

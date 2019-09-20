@@ -21,7 +21,7 @@
     "noLib": false,
     "noStrictGenericChecks": true,
     "paths": {
-      "src/*": [ "src/*" ]
+      "@src/*": [ "src/*" ]
     },
     "removeComments": true,
     "skipLibCheck": false,

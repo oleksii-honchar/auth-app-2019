@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { AccessTokenScopes } from 'src/enums';
-import { User } from 'src/models';
-import { getLogger } from 'src/libs/logger';
-import { accessTokenRepository } from 'src/repositories';
+import { AccessTokenScopes } from '@src/enums';
+import { User } from '@src/models';
+import { getLogger } from '@src/libs/logger';
+import { accessTokenRepository } from '@src/repositories';
 
 async function processLogout (req: Request) {
   const logger = getLogger('api/login:post.processLogin()');

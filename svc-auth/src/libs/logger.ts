@@ -5,7 +5,7 @@ import {
 import * as Bunyan from 'bunyan';
 import * as BanyanFormat from 'bunyan-format';
 
-import { is } from 'src/libs/is';
+import { is } from '@src/libs/is';
 
 import * as pkg from '../../package.json';
 

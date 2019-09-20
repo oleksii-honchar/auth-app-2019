@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { userRepository } from 'src/repositories';
-import { User } from 'src/models';
-import { getLogger } from 'src/libs/logger';
+import { userRepository } from '@src/repositories';
+import { User } from '@src/models';
+import { getLogger } from '@src/libs/logger';
 import {
   RegisterParamsFromReq,
   RegisterParamsInterface,

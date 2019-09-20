@@ -1,6 +1,6 @@
-import { getLogger } from 'src/libs/logger';
-import { userSeeds } from 'src/seeds/userSeeds';
-import { User } from 'src/models';
+import { getLogger } from '@src/libs/logger';
+import { userSeeds } from '@src/seeds/userSeeds';
+import { User } from '@src/models';
 
 class DbSeedService {
   private logger = getLogger('DbSeedService.bootstrapDb()');

@@ -2,8 +2,8 @@ import { Router, static as serveStatic } from 'express';
 import * as path from 'path';
 import * as HttpStatusCodes from 'http-status-codes';
 
-import { is } from 'src/libs/is';
-import { STATIC_ASSETS_PATH } from 'src/constants';
+import { is } from '@src/libs/is';
+import { STATIC_ASSETS_PATH } from '@src/constants';
 
 export const swaggerEditorRouter = Router();
 

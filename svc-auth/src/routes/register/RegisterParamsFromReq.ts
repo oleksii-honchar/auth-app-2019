@@ -1,8 +1,8 @@
 import { Request } from 'express';
 import * as joi from '@hapi/joi';
 
-import { getLogger } from 'src/libs/logger';
-import { is } from 'src/libs/is';
+import { getLogger } from '@src/libs/logger';
+import { is } from '@src/libs/is';
 
 export interface RegisterParamsInterface {
   email: string;

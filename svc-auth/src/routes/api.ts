@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { rateLimitMiddleware } from 'src/libs/middlewares';
+import { rateLimitMiddleware } from '@src/libs/middlewares';
 import { versionRouter } from './version';
 import { registerRouter } from './register';
 import { loginRouter } from './login';

@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { Buffer } from 'safe-buffer';
 import { createCipheriv, Binary, createDecipheriv } from 'crypto';
 

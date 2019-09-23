@@ -1,21 +1,20 @@
 {
   "compilerOptions": {
     "allowJs": false,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "declaration": true,
     "diagnostics": false,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "incremental": true,
     "importHelpers": true,
-    "isolatedModules": false,
     "lib": [
       "dom",
       "esnext"
     ],
-    "module": "commonjs",
     "newLine": "lf",
     "noEmit": true,
     "noLib": false,
@@ -28,10 +27,9 @@
     "sourceMap": true,
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "esnext",
+    "target": "es5",
     "typeRoots": [
-      "node_modules/@types",
-      "src/typings"
+      "node_modules/@types"
     ]
   },
   "include": [ // relative to ./configs/tsconfig.json

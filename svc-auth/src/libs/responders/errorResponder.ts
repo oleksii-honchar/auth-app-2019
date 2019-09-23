@@ -1,8 +1,6 @@
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import { AssertionError } from 'assert';
-import {
-  Request, Response, NextFunction, Application,
-} from 'express';
+import { Request, Response, NextFunction, Application } from 'express';
 import * as HttpStatusCodes from 'http-status-codes';
 
 import { is } from 'src/libs/is';
@@ -11,7 +9,7 @@ import { getLogger } from '../logger';
 
 const logger = getLogger('APP-SVC[err]');
 
-function default404Handler (req: Request, res: Response, next: NextFunction) {
+function default404Handler(req: Request, res: Response, next: NextFunction) {
   res.statusCode = res.statusCode || HttpStatusCodes.NOT_FOUND;
 
   if (res.statusCode === HttpStatusCodes.NOT_FOUND) {
@@ -25,9 +23,7 @@ function default404Handler (req: Request, res: Response, next: NextFunction) {
   next();
 }
 
-function assertionErrorHandler (
-  err: any, req: Request, res: Response, next: NextFunction,
-) {
+function assertionErrorHandler(err: any, req: Request, res: Response, next: NextFunction) {
   let error = err;
   const isAssertionError = error instanceof AssertionError;
 
@@ -52,13 +48,13 @@ function assertionErrorHandler (
   return next();
 }
 
-function defaultHandler (err: any, req: Request, res: Response, next: NextFunction) {
+function defaultHandler(err: any, req: Request, res: Response, next: NextFunction) {
   const error = err;
   error.code = error.code || HttpStatusCodes.INTERNAL_SERVER_ERROR;
 
   if (
-    error['code'] === HttpStatusCodes.INTERNAL_SERVER_ERROR
-    || error['code'] === 'ETIMEDOUT'
+    error['code'] === HttpStatusCodes.INTERNAL_SERVER_ERROR ||
+    error['code'] === 'ETIMEDOUT'
   ) {
     logger.error({ error });
     logger.error(error.stack);
@@ -71,7 +67,7 @@ function defaultHandler (err: any, req: Request, res: Response, next: NextFuncti
   next();
 }
 
-function tooBusyErrHandler (error: any, req: Request, res: Response, next: NextFunction) {
+function tooBusyErrHandler(error: any, req: Request, res: Response, next: NextFunction) {
   if (error.code === HttpStatusCodes.SERVICE_UNAVAILABLE) {
     logger.error({ error });
     res.statusCode = error.code;
@@ -82,7 +78,7 @@ function tooBusyErrHandler (error: any, req: Request, res: Response, next: NextF
   }
 }
 
-function use (app: Application) {
+function use(app: Application) {
   app.use(default404Handler);
   app.use(tooBusyErrHandler);
   app.use(assertionErrorHandler);

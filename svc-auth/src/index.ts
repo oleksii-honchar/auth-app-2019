@@ -1,8 +1,8 @@
-import * as http from 'http';
-import * as tooBusy from 'toobusy-js';
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as cookieParser from 'cookie-parser';
+import http from 'http';
+import tooBusy from 'toobusy-js';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import { router } from './routes';
 import { getLogger } from './libs/logger';
@@ -10,7 +10,7 @@ import { dbService, dbSeedService } from './services';
 import { errorResponder, finalResponder } from './libs/responders';
 import { noCacheMiddleware, tooBusyMiddleware, requestLoggerMiddleware } from './libs/middlewares';
 
-import * as pkg from '../package.json';
+import * as package$ from '../package.json';
 import { STATIC_ASSETS_PATH } from './constants';
 
 process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'error';
@@ -33,7 +33,7 @@ logger.info(`[SVC_PORT = ${port}]`);
 logger.info(`[SVC_MOUNT_POINT = ${process.env.SVC_MOUNT_POINT}]`);
 logger.info(`[WA_BASE_URL = ${process.env.WA_BASE_URL}]`);
 
-logger.info(`Starting app [${pkg.name}] ...`);
+logger.info(`Starting app [${package$.name}] ...`);
 
 const app = express();
 

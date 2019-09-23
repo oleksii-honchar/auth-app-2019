@@ -61,7 +61,7 @@
     "@commitlint/config-conventional": "8.2.0",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.5",
-    "codelyzer": "5.0.0",
+    "codelyzer": "5.1.1",
     "commitizen": "4.0.3",
     "cross-env": "6.0.0",
     "cz-conventional-changelog": "3.0.2",
@@ -70,7 +70,7 @@
     "jest-preset-angular": "7.1.1",
     "protractor": "5.4.0",
     "ts-node": "7.0.0",
-    "tslint": "5.15.0",
+    "tslint": "5.20.0",
     "typescript": "3.5.3"
   }
 }

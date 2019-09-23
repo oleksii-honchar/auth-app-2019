@@ -37,7 +37,8 @@
     <button
       mat-flat-button
       color="primary"
-      (click)="markFormFieldsAsTouched(form)">
+      [disabled]="!form.valid"
+      (click)="onSubmit(form)">
       Sign In
     </button>
   </mat-card-footer>

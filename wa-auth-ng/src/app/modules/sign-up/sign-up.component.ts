@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidatorService } from '@app/shared';
@@ -6,7 +6,8 @@ import { ValidatorService } from '@app/shared';
 @Component({
   selector: 'sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpComponent {
   private siteKey = '6LcWhbkUAAAAAKaG3JoHPgVSMCGcdcMrBNVBSK5Z';

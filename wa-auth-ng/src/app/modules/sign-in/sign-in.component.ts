@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidatorService } from '@app/shared/services';
@@ -6,7 +6,8 @@ import { ValidatorService } from '@app/shared/services';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInComponent {
   private form: FormGroup;
@@ -28,5 +29,10 @@ export class SignInComponent {
     if (!form.valid) {
       this.validatorService.validateAllFormFields(form);
     }
+  }
+
+  onSubmit (form: FormGroup) {
+    this.markFormFieldsAsTouched(form);
+    console.log(108);
   }
 }

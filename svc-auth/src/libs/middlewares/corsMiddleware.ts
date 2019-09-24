@@ -10,6 +10,12 @@ const corsWhitelist = process.env.CORS_WHITELIST.split(' ');
 const corsConfig = {
   origin: (origin: string, callback: any) => {
     logger.debug(`origin: ${origin}`);
+
+    if (is.undefined(origin)) {
+      logger.debug('No CORS check needed.');
+      return callback(null, true);
+    }
+
     const matched = corsWhitelist.reduce((total: string[], host: string) => {
       if (origin.includes(host)) {
         total.push(host);

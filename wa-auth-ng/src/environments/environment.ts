@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'svc-auth-loc.dev.me:9000'
+  apiUrl: 'http://svc-auth-loc.dev.me:9000/api'
 };
 
 /*

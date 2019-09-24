@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { environment } from '@src/environments/environment';
 import { ValidatorService } from '@app/shared';
 
 @Component({
@@ -10,7 +11,7 @@ import { ValidatorService } from '@app/shared';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpComponent {
-  private siteKey = '6LcWhbkUAAAAAKaG3JoHPgVSMCGcdcMrBNVBSK5Z';
+  private siteKey = environment['siteKey'];
   private form: FormGroup;
 
   constructor(

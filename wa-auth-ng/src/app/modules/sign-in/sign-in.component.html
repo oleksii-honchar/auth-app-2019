@@ -30,6 +30,20 @@
           Please enter the password
         </mat-error>
       </mat-form-field>
+
+      <ngx-recaptcha2
+        [siteKey]="siteKey"
+        [useGlobalDomain]="false"
+        [size]="'normal'"
+        [hl]="'en'"
+        [theme]="'light'"
+        [type]="'image'"
+        formControlName="recaptcha">
+      </ngx-recaptcha2>
+      <mat-error *ngIf="form.get('recaptcha').invalid && form.get('recaptcha').touched">
+        Please tick the check-box
+      </mat-error>
+
     </form>
   </mat-card-content>
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://svc-auth-loc.dev.me:9000/api'
+  apiUrl: 'http://svc-auth-loc.dev.me:9000/api',
+  siteKey: '6LcWhbkUAAAAAKaG3JoHPgVSMCGcdcMrBNVBSK5Z'
 };
 
 /*

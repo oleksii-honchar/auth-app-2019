@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppInitService } from '@app/app-init.service';
 
-function initializeApp (appInitService: AppInitService) {
+export function initializeApp (appInitService: AppInitService) {
   return (): Promise<any> => {
     return appInitService.init();
   };

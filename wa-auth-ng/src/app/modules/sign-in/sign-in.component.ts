@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidatorService } from '@app/shared/services';
+import { environment } from '@src/environments/environment';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,6 +12,7 @@ import { ValidatorService } from '@app/shared/services';
 })
 export class SignInComponent {
   private form: FormGroup;
+  private siteKey = environment['siteKey'];
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +24,7 @@ export class SignInComponent {
         Validators.pattern(this.validatorService.emailPattern)
       ]],
       password: [ '', Validators.required ],
+      recaptcha: ['', Validators.required]
     });
   }
 

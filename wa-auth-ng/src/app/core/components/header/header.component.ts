@@ -14,7 +14,5 @@ export class HeaderComponent implements OnInit {
 
   constructor(private versionService: VersionService) {}
 
-  ngOnInit() {
-    console.log(this.serviceVersion);
-  }
+  ngOnInit() {}
 }

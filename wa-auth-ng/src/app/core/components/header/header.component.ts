@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Version } from '@app/core/interfaces';
+import { VersionService } from '@app/core/services';
 
 @Component({
   selector: 'header',
@@ -9,11 +10,11 @@ import { Version } from '@app/core/interfaces';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  serviceVersion: Version = this.route.snapshot.data.todos;
+  serviceVersion: Version = this.versionService.version;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private versionService: VersionService) {}
 
   ngOnInit() {
+    console.log(this.serviceVersion);
   }
-
 }

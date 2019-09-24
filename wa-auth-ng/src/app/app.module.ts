@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CoreModule } from './core';
@@ -14,6 +14,13 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppInitService } from '@app/app-init.service';
+
+function initializeApp (appInitService: AppInitService) {
+  return (): Promise<any> => {
+    return appInitService.init();
+  };
+}
 
 @NgModule({
   declarations: [
@@ -30,7 +37,15 @@ import { AppComponent } from './app.component';
     SignUpModule,
     DashboardModule,
   ],
-  providers: [],
+  providers: [
+    AppInitService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [ AppInitService ],
+      multi: true
+    }
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

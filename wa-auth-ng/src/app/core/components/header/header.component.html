@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Auth app</span>
+    <div class="app-title">
+      <span>Auth app</span>
+      <span class="mat-small">({{serviceVersion}})</span>
+    </div>
     <span class="spacer"></span>
     <a mat-stroked-button routerLink="/sign-in">Sign in</a>
     <span class="divider"></span>

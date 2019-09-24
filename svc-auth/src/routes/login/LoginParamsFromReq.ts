@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import * as joi from '@hapi/joi';
+import joi from '@hapi/joi';
 
 import { getLogger } from '@src/libs/logger';
 import { is } from '@src/libs/is';

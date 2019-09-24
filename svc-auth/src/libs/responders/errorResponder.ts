@@ -3,7 +3,7 @@ import { AssertionError } from 'assert';
 import {
   Request, Response, NextFunction, Application,
 } from 'express';
-import * as HttpStatusCodes from 'http-status-codes';
+import HttpStatusCodes from 'http-status-codes';
 
 import { is } from '@src/libs/is';
 

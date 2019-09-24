@@ -1,4 +1,4 @@
-import * as path from 'path';
+import path from 'path';
 
 export const STATIC_ASSETS_PATH = path.join(__dirname, 'assets');
 

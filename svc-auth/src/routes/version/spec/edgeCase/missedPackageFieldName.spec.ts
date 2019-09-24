@@ -1,5 +1,5 @@
 import { get } from 'lodash';
-import * as faker from 'faker';
+import faker from 'faker';
 
 describe('missed package field name', () => {
   let mockPkg: any = null;

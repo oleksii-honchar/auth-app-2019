@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import * as HttpStatusCodes from 'http-status-codes';
-import * as toobusy from 'toobusy-js';
+import HttpStatusCodes from 'http-status-codes';
+import toobusy from 'toobusy-js';
 
 import { is } from '../is';
 

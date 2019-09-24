@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as path from 'path';
+import path from 'path';
 
 import { STATIC_ASSETS_PATH } from '../constants';
 

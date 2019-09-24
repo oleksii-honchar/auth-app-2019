@@ -2,12 +2,12 @@ import { Request, Response } from 'express';
 import {
   pick, defaults, omit, extend, has, get,
 } from 'lodash';
-import * as Bunyan from 'bunyan';
-import * as BanyanFormat from 'bunyan-format';
+import Bunyan from 'bunyan';
+import BanyanFormat from 'bunyan-format';
 
 import { is } from '@src/libs/is';
 
-import * as pkg from '../../package.json';
+import pkg from '../../package.json';
 
 const loggers: { [key: string]: Bunyan } = {};
 

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import * as uuid from 'uuid';
+import uuid from 'uuid';
 
 import { getLogger } from '../logger';
 

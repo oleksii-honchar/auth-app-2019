@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import * as HttpStatusCodes from 'http-status-codes';
+import HttpStatusCodes from 'http-status-codes';
 
 import { userRepository } from '@src/repositories';
 import { User } from '@src/models';

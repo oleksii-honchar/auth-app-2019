@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 import { UserRoles } from '@src/enums';
 import { passwordService } from '@src/services';

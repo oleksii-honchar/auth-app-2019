@@ -1,7 +1,7 @@
 import { Router, static as serveStatic } from 'express';
-import * as path from 'path';
-import * as HttpStatusCodes from 'http-status-codes';
-import * as fs from 'fs';
+import path from 'path';
+import HttpStatusCodes from 'http-status-codes';
+import fs from 'fs';
 
 import { getLogger } from '@src/libs/logger';
 import { is } from '@src/libs/is';

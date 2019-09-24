@@ -6,6 +6,7 @@
     "declaration": true,
     "diagnostics": false,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "incremental": true,

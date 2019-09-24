@@ -1,5 +1,5 @@
 import { get } from 'lodash';
-import * as faker from 'faker';
+import faker from 'faker';
 
 describe('Adds name and version to response', () => {
   let mockPkg: any = null;

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import * as HttpStatusCodes from 'http-status-codes';
-import * as _ from 'lodash';
+import HttpStatusCodes from 'http-status-codes';
+import _ from 'lodash';
 
 import { User } from '@src/models';
 import { accessTokenRepository, userRepository } from '@src/repositories';

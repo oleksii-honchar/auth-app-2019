@@ -73,8 +73,9 @@ Please add this host to the local `/etc/hosts`. This will allow to work properly
 ```bash
 127.0.0.1 wa-loc.dev.me
 127.0.0.1 svc-auth-loc.dev.me
-
 ```
+
+There is special `CORS_WHITELIST` env var used in `./configs/envs` to define domains whitelist.
 
 # Launch
 

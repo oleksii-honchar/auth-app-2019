@@ -1,8 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { ValidatorService } from '@app/shared/services';
 import { environment } from '@src/environments/environment';
+import { Errors } from '@app/core/interfaces';
+import { AuthService } from '@app/core/services';
+import { ValidatorService } from '@app/shared/services';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,10 +16,15 @@ import { environment } from '@src/environments/environment';
 export class SignInComponent {
   private form: FormGroup;
   private siteKey = environment['siteKey'];
+  private isSubmitting = false;
+  private errors: Errors = {};
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
-    private validatorService: ValidatorService
+    private validatorService: ValidatorService,
+    private authService: AuthService,
+    private cd: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
       email: ['', [
@@ -36,6 +44,19 @@ export class SignInComponent {
 
   onSubmit (form: FormGroup) {
     this.markFormFieldsAsTouched(form);
-    console.log(108);
+    this.isSubmitting = true;
+    this.errors = {};
+
+    const credentials = this.form.value;
+    this.authService
+      .signIn(credentials)
+      .subscribe(
+        data => this.router.navigateByUrl('/dashboard'),
+        err => {
+          this.errors = err;
+          this.isSubmitting = false;
+          this.cd.detectChanges();
+        }
+      );
   }
 }

@@ -4,7 +4,12 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components';
 import { SharedModule } from '@app/shared';
-import { ApiService, VersionService } from '@app/core/services';
+import {
+  ApiService,
+  JwtService,
+  VersionService,
+  AuthService
+} from '@app/core/services';
 
 @NgModule({
   declarations: [ HeaderComponent ],
@@ -14,6 +19,11 @@ import { ApiService, VersionService } from '@app/core/services';
     SharedModule
   ],
   exports: [ HeaderComponent ],
-  providers: [ VersionService, ApiService ]
+  providers: [
+    ApiService,
+    AuthService,
+    JwtService,
+    VersionService
+  ]
 })
 export class CoreModule { }

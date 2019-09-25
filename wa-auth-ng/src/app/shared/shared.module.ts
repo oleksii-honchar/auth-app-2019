@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './components';
 
 import { AutofocusDirective } from './directives/autofocus.directive';
-import { PasswordVerifyComponent } from './components/';
+import { PasswordVerifyComponent, ListErrorsComponent } from './components/';
 
 @NgModule({
-  declarations: [ AutofocusDirective, PasswordVerifyComponent ],
+  declarations: [
+    AutofocusDirective,
+    ListErrorsComponent,
+    PasswordVerifyComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -14,6 +18,7 @@ import { PasswordVerifyComponent } from './components/';
   exports: [
     MaterialModule,
     AutofocusDirective,
+    ListErrorsComponent,
     PasswordVerifyComponent
   ]
 })

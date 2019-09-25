@@ -5,6 +5,7 @@
   </mat-card-header>
 
   <mat-card-content>
+    <list-errors [errors]="errors"></list-errors>
     <form autocomplete="off" [formGroup]="form">
       <mat-form-field>
         <input
@@ -51,7 +52,6 @@
     <button
       mat-flat-button
       color="primary"
-      [disabled]="!form.valid"
       (click)="onSubmit(form)">
       Sign In
     </button>

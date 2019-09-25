@@ -67,7 +67,7 @@ function defaultHandler (err: any, req: Request, res: Response, next: NextFuncti
   }
 
   res.statusCode = error.code;
-  res.body = error.message;
+  res.body = { [error.name || 'error']: error.message };
   next();
 }
 

@@ -5,7 +5,7 @@ import { SharedModule } from 'src/app/shared';
 import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
-  declarations: [SignInComponent],
+  declarations: [ SignInComponent ],
   imports: [
     CommonModule,
     SharedModule,
